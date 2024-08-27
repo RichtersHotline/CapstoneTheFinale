@@ -1,0 +1,38 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap');
+
+/* Bootstrap icons */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+
+/* NavBar Styling */
+.navbar {
+
+background-color:#1F1F23 !important;
+font-family: "Darker Grotesque", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+.spreader {
+
+width:90%;
+display:flex;
+margin:auto;
+
+}
+.IconColour {
+
+    color:black !important;
+
+}
+#Searcher {
+
+max-width:50%;
+
+}
+.Logo {
+
+color:white !important;
+
+}
