@@ -49,6 +49,20 @@ font-family: "Darker Grotesque", sans-serif;
   font-weight: 300;
   font-style: normal;
 }
+a {
+
+text-decoration:none;
+
+}
+.router-link {
+display:flex;
+justify-content: center;
+width:70%;
+margin:auto;
+text-decoration:underline;
+text-decoration-color:#3d3d44
+
+}
 .spreader {
 
 width:90%;
@@ -303,7 +317,7 @@ opacity:0.4;
 
 
         background-color: #3d3d44;
-        width:25%;
+        width:75%;
         height:25%;
         border:1px solid black;
         border-radius:7px;
@@ -327,7 +341,7 @@ margin-left:10px;
        }
        .btnContainer {
     display:flex;
-    justify-content: center;
+      flex-direction:column;
 
 
        }
