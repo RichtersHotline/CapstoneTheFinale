@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import AboutUsView from '../views/AboutUsView.vue'
 import ContactUsView from '../views/ContactUsView.vue'
 import SplashPageView from '../views/SplashPageView.vue'
+import SignUpView from '../views/SignUpView.vue'
 
 const routes = [
   {
@@ -25,7 +26,13 @@ const routes = [
       name: 'splash',
       component:SplashPageView,
       meta: {hideNavbarComp: true}
-    }
+    },
+    {
+      path: '/signup',
+        name: 'signup',
+        component:SignUpView,
+        meta: {hideNavbarComp: true}
+      }
 ]
 
 const router = createRouter({
