@@ -10,8 +10,9 @@
 }
 /* Background color */
 body {
-    background-color: black;
-  }
+
+    background-color: #27272B !important;
+}
 /* NavBar Styling */
 .navbar {
 

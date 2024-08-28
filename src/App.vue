@@ -1,7 +1,7 @@
 <template>
 <div class="wrapper">
 <NavbarComp/>
-<main class="container-fluid">
+<main class="container-fluid bgColour">
 <router-view/>
 
 </main>
