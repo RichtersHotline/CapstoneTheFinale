@@ -124,6 +124,18 @@ font-family: "Darker Grotesque", sans-serif;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.centered2 {
+    color: white !important;
+    font-family: "Darker Grotesque", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 300;
+      font-style: normal;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width:40%;
+}
 .centereds {
     color: white !important;
     font-family: "Darker Grotesque", sans-serif;
