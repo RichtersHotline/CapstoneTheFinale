@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid d-flex justify-content-start align-items-center">
         <a class="navbar-brand Logo" href="#">Home Of The Broken Heroes</a>
-        
+        <router-link to="/about">About</router-link>
 
         <input type="text" placeholder="Search for comrades..." class="form-control SearchBar" id="Searcher">
         <div class="spreader d-flex justify-content-around mt-2">
