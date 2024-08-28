@@ -1,6 +1,6 @@
 <template>
 <div class="wrapper">
-<NavbarComp/>
+<NavbarComp v-if="!$route.meta.hideNavbarComp"/>
 <main class="container-fluid bgColour">
 <router-view/>
 

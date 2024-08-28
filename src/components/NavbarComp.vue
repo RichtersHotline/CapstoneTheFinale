@@ -4,6 +4,7 @@
         <a class="navbar-brand Logo" href="#">Home Of The Broken Heroes</a>
         <router-link to="/about">About</router-link>
         <router-link to="/contact">Contact</router-link>
+        <router-link to="/splash">splash</router-link>
 
         <input type="text" placeholder="Search for comrades..." class="form-control SearchBar" id="Searcher">
         <div class="spreader d-flex justify-content-around mt-2">
