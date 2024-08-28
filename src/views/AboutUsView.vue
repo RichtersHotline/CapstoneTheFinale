@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid p-0">
     <div class="imgContainer">
       <h2 class="centered">Our History</h2>
       <h4 class="centered2">We didn’t start out as a website. After WW2. A group of veterans. Beaten and broken by the war went home not to praise but to disdain and resentment.</h4> 

@@ -1,5 +1,5 @@
 <template>
-<div class="container-fluid">
+<div class="container-fluid p-0">
     <div class="imgContainer">
       <h2 class="centereds display-4">Welcome To Our Unit</h2>
       <h4 class="centereds2">Sign up is and always will be 100% free.</h4> 
