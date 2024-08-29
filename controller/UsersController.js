@@ -8,14 +8,14 @@ PostersRouter.use(bodyParser.json())
 
 // Getters
 
-PostersRouter.get("/users",  (req, res) => {
+PostersRouter.get("/",  (req, res) => {
 
     Posters.fetchAllUsers(req, res)
     
     
     })
     
-    PostersRouter.get("/users/:id",  (req, res) => {
+    PostersRouter.get("/:id",  (req, res) => {
 
     Posters.fetchSingleUser(req, res)
     
@@ -31,7 +31,7 @@ PostersRouter.get("/users",  (req, res) => {
 
     })
      // Updates
-     PostersRouter.patch("/users/:id", (req, res) => {
+     PostersRouter.patch("/:id", (req, res) => {
     
         Posters.updateProfile(req, res)
         
@@ -45,9 +45,15 @@ PostersRouter.get("/users",  (req, res) => {
         
         })
         // Delete
-        PostersRouter.delete("/users/id",  (req, res) => {
+        PostersRouter.delete("/:id",  (req, res) => {
 
             Posters.deleteUser(req, res)
             
             
             })
+            export {
+
+                PostersRouter,
+                express
+    
+            }
