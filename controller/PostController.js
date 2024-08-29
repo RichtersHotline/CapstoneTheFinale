@@ -9,21 +9,21 @@ MessageRouter.use(bodyParser.json())
 
 // Getters
 
-MessageRouter.get("/posts",  (req, res) => {
+MessageRouter.get("/",  (req, res) => {
 
     Messages.fetchAllPosts(req, res)
     
     
     })
     
-MessageRouter.get("/post/:id",  (req, res) => {
+MessageRouter.get("/:id",  (req, res) => {
 
     Messages.fetchSinglePost(req, res)
     
     
     })
     // Posting
-    MessageRouter.post("/posts", (req, res) => {
+    MessageRouter.post("/post", (req, res) => {
 
         Messages.postMsg(req, res)
 
@@ -32,18 +32,24 @@ MessageRouter.get("/post/:id",  (req, res) => {
 
     })
      // Updates
-     MessageRouter.patch("/post/:id", (req, res) => {
+     MessageRouter.patch("/:id", (req, res) => {
     
         Messages.updatePost(req, res)
         
         
         }) 
     // Deletes
-    MessageRouter.delete("/post/:id",  (req, res) => {
+    MessageRouter.delete("/:id",  (req, res) => {
 
         Messages.deletePost(req, res)
         
         
         })
+        export {
+
+            MessageRouter
+
+
+        }
        
             

@@ -78,7 +78,7 @@ async postMsg(req, res) {
         } else {
           res.json({
             status: res.statusCode,
-            Message: "Product has successfully been added",
+            Message: "Post successful",
           });
         }
       });
@@ -144,3 +144,4 @@ async updatePost(req, res) {
 
     
 }
+export { Posts };

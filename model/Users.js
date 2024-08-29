@@ -10,7 +10,7 @@ class Users{
 fetchSingleUser(req, res) {
 try {
     const Query = `
-    select userID, firstName, lastName, UnitorRank, UserImg 
+    select userID, firstName, lastName, mobileNumber, emailAddress, UnitorRank, combatStatus,  userPwd, UserImg, FriendCount
     from Users
     where userID = ${req.params.id}
 
@@ -57,7 +57,7 @@ fetchAllUsers(req, res) {
     try {
         let data = req.body
         // encrypts the users password to 12 random characters also known as salt (???)
-        data.pwd = await hash(data.pwd, 12)
+        data.userPwd = await hash(data.userPwd, 12)
         //   Payload
         let user = {
 
@@ -141,7 +141,7 @@ fetchAllUsers(req, res) {
 // Updating
 async updateProfile(req, res) {
     try {
-      const strQry = `
+      const Query = `
         
         update Users
         set ?
@@ -261,3 +261,4 @@ async Login(req, res) {
 
 
 }
+export { Users };
