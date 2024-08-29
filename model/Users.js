@@ -5,14 +5,14 @@ import {
 import {
     hash, compare
 } from "bcrypt"
-class users{
+class Users{
     // fetching 
 fetchSingleUser(req, res) {
 try {
     const Query = `
     select userID, firstName, lastName, UnitorRank, UserImg 
     from Users
-    where productID = ${req.params.id}
+    where userID = ${req.params.id}
 
     `;   
     db.query(Query, (err, results) => {
@@ -164,7 +164,91 @@ async updateProfile(req, res) {
       });
     }
   }
-  
+// Login 
+async Login(req, res) {
+    try {
+
+        const {
+            emailAddress,
+            userPwd
+        } = req.body
+        const Query = `
+    
+    select userID, firstName, lastName, mobileNumber, emailAddress, UnitorRank, combatStatus,  userPwd, UserImg, FriendCount
+        from Users
+    where emailAddress = '${emailAddress}';
+    
+    
+    `
+        db.query(Query, async (err, result) => {
+            if (err) throw new Error("Invalid Login. Pleases check your details")
+            if (!result?.length) {
+                res.json({
+
+                    status: 401,
+                    msg: "You are not registered. Please register"
+
+
+                })
+
+
+            } else {
+
+                const isValidPass = await compare(userPwd, result[0].userPwd)
+                if (isValidPass) {
+
+                    const token = createToken({
+                        emailAddress,
+                        userPwd
+
+
+                    })
+                    res.json({
+                        status: res.statusCode,
+                        token,
+                        result: result[0]
+
+
+
+
+                    })
+
+                } else {
+
+                    res.json({
+
+                        status: 401,
+                        msg: "You might not be registered"
+
+
+                    })
+
+
+                }
+
+
+            }
+        })
+
+
+    } catch (e) {
+
+        res.json({
+            status: 404,
+            msg: e.message
+
+
+
+        })
+
+    }
+
+
+
+
+
+
+}  
 
 
 

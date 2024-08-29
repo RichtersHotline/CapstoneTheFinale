@@ -6,6 +6,7 @@ import {
     hash, compare
 } from "bcrypt"
 class Posts {
+    // Fetching
     fetchAllPosts (req, res) {
         try {
             const Query = `
@@ -27,6 +28,32 @@ class Posts {
         });
     }
     }
+    fetchSinglePost(req, res) {
+try {
+    const Query = `
+    select postID, Msg, DatePosted, userID, Salutes, Replies
+    from UserPosts
+    where productID = ${req.params.id}
+
+    `;
+    db.query(Query, (err, results) => {
+        if (err) throw new Error("Post could not be retrieved");
+        res.json({
+            status: res/statusCode,
+            results,
+        });
+    });
+} catch (e) {
+    res.json({
+        status:404,
+        Eror: e.message,
+    });
+}
+    }
+
+
+
+    
 // Posting and Adding
 async postMsg(req, res) {
     try {
