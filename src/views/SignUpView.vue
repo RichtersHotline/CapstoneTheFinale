@@ -12,13 +12,13 @@
           
   <h2 class="text-center">First Name:</h2> 
   <div class="ContactUsText">
-  <input type="text" name="FirstName" placeholder="First name..." class="User" id="ContactForm" required UserEntry>
+  <input type="text" name="FirstName" placeholder="First name..." class="User" id="ContactForm" v-model="payload.firstName" required UserEntry>
   </div>
         </div>
         <div class="col">
           <h2 class="text-center">Last Name:</h2> 
           <div class="ContactUsText">
-              <input type="text" name="LastName" placeholder="Last name..." class="User" id="ContactForm"  required UserEntry>
+              <input type="text" name="LastName" placeholder="Last name..." class="User" id="ContactForm" v-model="payload.lastName"  required UserEntry>
           </div>
                     </div>
     </div>
@@ -26,23 +26,23 @@
       <div class="col">
   <h2 class="text-center">Mobile Number:</h2> 
   <div class="ContactUsText">
-  <input type="number" name="Phone" placeholder="Mobile Number" id="ContactForm" required UserEntry>
+  <input type="number" name="Phone" placeholder="Mobile Number" id="ContactForm" v-model="payload.mobileNumber" required UserEntry>
   </div>
   <h2 class="text-center">Rank/Unit:</h2> 
   <div class="ContactUsText">
-  <input type="text" name="Phone" placeholder="Mobile Number" id="ContactForm" required UserEntry>
+  <input type="text" name="Rank" placeholder="Rank..." id="ContactForm" v-model="payload.UnitorRank" required UserEntry>
   </div>
       </div>
       <div class="col">
         <h2 class="text-center">Email Address:</h2> 
         <div class="ContactUsText">
-            <input type="email" name="Email" placeholder="Email..." id="ContactForm" required UserEntry>
+            <input type="email" name="Email" placeholder="Email..." id="ContactForm" v-model="payload.emailAddress" required UserEntry>
         </div>
         <h2 class="text-center">Status:</h2> 
   <div class="ContactUsText">
-<select name="Status" id="ContactForm">
+<select name="Status" id="ContactForm" v-model="payload.combatStatus">
 <option value="Active">Active</option>
-<option value="Retired">Veteran</option>
+<option value="Veteran">Veteran</option>
 
 
 </select>
@@ -51,15 +51,15 @@
                   
                   <div class="row pt-4">
                     <div class="col">
-                <h2 class="text-center">Password</h2> 
-                <input type="password" name="Email" placeholder="Password..." id="SignUpPassword" required UserEntry>
+                <h2 class="text-center">Password:</h2> 
+                <input type="password" name="Email" placeholder="Password..." id="SignUpPassword" v-model="payload.userPwd" required UserEntry>
 
             </div>
                 
         </div>
      
         <div class="BtnCenter">
-        <button id="VipSignUp" type="submit"  class="mb-5">Enlist</button>
+        <button id="VipSignUp" type="submit" @click.prevent="Registration"  class="mb-5">Enlist</button>
         </div>
         
         
@@ -76,3 +76,60 @@
 </div>
 
 </template>
+<script>
+// import axios from "axios";
+export default {
+data() {
+return {
+payload: {
+firstName: "",
+lastName: "",
+mobileNumber:null,
+emailAddress: "",
+UnitorRank:"",
+combatStatus:"",
+userPwd:"",
+
+}
+
+
+
+}
+
+
+
+},
+computed: {
+users() {
+
+  return this.$store.state.users
+
+}
+
+
+},
+methods: {
+Registration() {
+  try {
+    console.log(this.payload);
+    this.$store.dispatch("addAUser", this.payload);
+
+  } catch (error) {
+
+    alert("Registration could not be completed")
+
+
+  }
+
+
+
+}
+
+
+
+
+}
+}
+
+
+</script>

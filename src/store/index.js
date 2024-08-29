@@ -70,7 +70,7 @@ console.log("error")
         console.log(msg);
         if (msg) {
           context.dispatch('fetchUsers')
-          toast.success(`${msg}`, {
+          toast.success(`${"You have been succesfully Registered"}`, {
             autoClose: 2000,
             position: toast.POSITION.BOTTOM_CENTER
           })
