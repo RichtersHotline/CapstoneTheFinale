@@ -113,6 +113,8 @@ Registration() {
   try {
     console.log(this.payload);
     this.$store.dispatch("addAUser", this.payload);
+    alert("Thank you for registering")
+    window.location.href="/contact"
 
   } catch (error) {
 
