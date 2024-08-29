@@ -117,6 +117,24 @@ console.log("error")
         })
       }
     },
+    async Login(context, payload) {
+      try {
+        console.log(payload)
+        const  msg  = await (await axios.post(`${apiURL}users/login/${payload.emailAddress}`, payload.data)).data
+        if (msg) {
+          context.dispatch('fetchUsers')
+          toast.success(`${msg}`, {
+            autoClose: 2000,
+            position: toast.POSITION.BOTTOM_CENTER
+          })
+        }
+      } catch (e) {
+        toast.error(`${e.message}`, {
+          autoClose: 2000,
+          position: toast.POSITION.BOTTOM_CENTER
+        })
+      }
+    },
 //Everything to do with Posts
 async fetchPosts(context) {
   try {
