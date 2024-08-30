@@ -15,7 +15,6 @@ app.use(
         extended: true
 
     }))
-    app.use(cors())
 
 app.use((req, res, next) => {
 
@@ -34,6 +33,8 @@ next()
 
 
 // THIS IS THE ACTUAL ENDPOINT THAT THE USER WILL NEED TO ENTER TO GET TO RELEVANT PAGES
+app.use(cors())
+
 app.use("/users", PostersRouter)
 app.use("/posts", MessageRouter)
 
