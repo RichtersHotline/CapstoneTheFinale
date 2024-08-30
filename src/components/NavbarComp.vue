@@ -6,7 +6,7 @@
         <router-link to="/contact">Contact</router-link>
         <router-link to="/splash">splash</router-link>
         <router-link to="/signup">signup</router-link>
-
+        <router-link to="/profile">profile</router-link>
         <input type="text" placeholder="Search for comrades..." class="form-control SearchBar" id="Searcher">
         <div class="spreader d-flex justify-content-around mt-2">
         <i class="bi bi-house-door-fill IconColour h4 ml-3"></i>

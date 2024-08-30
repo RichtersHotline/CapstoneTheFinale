@@ -84,7 +84,27 @@
 
 
 </div>
+<h1 >Testing Grounds</h1>
+<div v-if="Users">
+
+  <div class="Profiles" v-for="user in Users" :key="user.userID">
+  
+  <h2>{{user.firstName}}</h2>
+  <h2>{{user.lastName}}</h2>
+  <h2>{{user.emailAddress}}</h2>
+  <h2>{{user.mobileNumber}}</h2>
+  <router-link :to="{name: 'profile', params: { id: user.userID } }">
+    <button type="button" class="VipBtn">View Profile</button>
+  </router-link>"
   </div>
+</div>
+<div v-else>
+  Be patient
+</div>
+
+
+
+</div>
 
 </template>
 <script>
@@ -92,6 +112,14 @@ export default {
 components: {
 
   
+
+},
+computed: {
+Users() {
+
+return this.$store.state.users
+},
+
 
 },
 methods: { 
@@ -105,7 +133,6 @@ alert("Your form has been cleared")
     let Email = document.getElementsByName("Email")[0]
 
   let UserEntry = document.getElementById("ContactForm")
-  console.log(UserEntry.value)
   if (!Email.value.includes('@')) {
      alert("You have entered an invalid Email Address")
  } 
@@ -123,6 +150,12 @@ case "Richter" :
 }
 
   }
+
+},
+mounted() {
+this.$store.dispatch("fetchUsers")
+console.log(this.Users)
+
 
 }
 }
