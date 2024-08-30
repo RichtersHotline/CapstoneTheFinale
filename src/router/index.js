@@ -4,6 +4,7 @@ import AboutUsView from '../views/AboutUsView.vue'
 import ContactUsView from '../views/ContactUsView.vue'
 import SplashPageView from '../views/SplashPageView.vue'
 import SignUpView from '../views/SignUpView.vue'
+import ProfileView from '../views/ProfileView.vue'
 
 const routes = [
   {
@@ -32,7 +33,12 @@ const routes = [
         name: 'signup',
         component:SignUpView,
         meta: {hideNavbarComp: true}
-      }
+      },
+      {
+        path: '/profile/:id',
+          name: 'profile',
+          component:ProfileView,
+        }
 ]
 
 const router = createRouter({

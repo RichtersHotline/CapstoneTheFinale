@@ -112,6 +112,7 @@ font-family: "Darker Grotesque", sans-serif;
     position: relative;
     text-align: center;
     color: white !important;
+   
 }
 .centered {
     color: white !important;
@@ -293,7 +294,8 @@ opacity:0.4;
     
     }
     #VipBtn {
-        background-color: #3d3d44;
+        background-color:		#1c222e;
+
         width:25%;
         height:25%;
         border:1px solid black;
@@ -328,7 +330,7 @@ opacity:0.4;
        #VipBtnLogin {
 
 
-        background-color: #3d3d44;
+        background-color:		#1c222e;
         width:75%;
         height:25%;
         border:1px solid black;
@@ -394,6 +396,184 @@ opacity:0.4;
        text-align:center;
 
        }
+
+       /* Profile View */
+       .NavCon {
+
+
+       }
+       
+       .searcher {
+       
+       
+       }
+       .NavContent {
+       
+       
+       }
+       
+       .SearchBTN {
+       
+           background-color:#554840;
+          color:white;
+       border:1px solid black;
+       width:10rem;
+       }
+       .Groups {
+          
+           background-color:	#554840 !important;
+           border:1px solid black !important;
+           margin-left:10px;
+       
+       }
+       .leftCon {
+       width:75%;
+           display:flex;
+           justify-content: space-between;
+           
+       }
+       .Content {
+       
+          
+       }
+       .Box {
+           text-align: center;
+           display:flex;
+           flex-grow:1;
+           width:50%;
+           height:100px;
+           background-color:black;
+           margin-top:20px;
+       
+       }
+       .userBox {
+           width:300px;
+           height:500px;
+           margin-top:20px;
+           font-family:Arial, Helvetica, sans-serif;
+       
+       }
+       .ImgBack {
+        background-color:#1F1F23 !important;
+        width:100%;
+       
+       }
+       .UserContent img {
+       
+           margin-top:10px;
+           
+       
+               width:50%;
+               height:8.75rem;
+               border-radius:50%;
+          margin-bottom:10px;
+           
+       
+       }
+       .UserContent {
+       
+           text-align:center;
+          color:white;
+       
+       }
+       
+       .UserContent p {
+       
+           padding:5px;
+       
+       }
+       .Inbox {
+       
+       width:70%;
+       border:none;
+       color:white;
+       background-color:		#1c222e;
+       border:1px solid black;
+       
+       }
+       .Send {
+       
+           width:30%;
+           margin-left:5px;
+           border:none;
+           color:white;
+           background-color:		#1c222e;
+           border:1px solid black;
+           display:block;
+           margin-top:5px;
+       }
+       .Buttons {
+       
+           display:flex;
+       justify-content: flex-end
+       ;}
+       .MiddleCon {
+       width:50%;
+       display:flex;
+       flex-direction:column; 
+       
+       }
+       .Thought {
+       
+       background-color:#1F1F23;
+       color:white;
+       text-align:center;
+       padding:10px;
+       margin-top:20px;
+       margin-bottom:20px;
+       }
+       .PostArea {
+         margin-top:10px;
+         text-align:center;
+         width:100%;
+       
+       }
+       #Post {
+       
+       
+       }
+       #UserName {
+       
+       background-color:#41533b;
+       color:white;
+       margin:0;
+       }
+       .PostedMsg {
+           margin:0;
+           background-color:#604439 !important;
+           color:white;
+       
+       }
+       textarea {
+       
+       
+       }
+       #Msg {
+           resize:none;
+           margin-top:10px;
+           width:100%;
+           margin-top:-17px;
+           height:30%;
+           background-color:#151519;
+           border:none;
+       }
+/* Profile Styling */
+
+#userName {
+
+    color:black !important;
+
+}
+.modal h4 {
+
+    color:black !important;
+
+}
+.modal h1 {
+
+color:black !important;
+
+}
 /* Media Queries */
 @media only screen and (max-width: 720px) {
     /* About Queries */

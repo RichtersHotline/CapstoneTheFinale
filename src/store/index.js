@@ -31,7 +31,7 @@ export default createStore({
     // Everything to do with users
     async fetchUsers(context) {
       try {
-        const results = await (await axios.get(`${apiURL}users`)).data
+        const {results} = await (await axios.get(`${apiURL}users`)).data
         if (results) {
           context.commit('setUsers', results)
         } else {
@@ -82,13 +82,13 @@ console.log("error")
         })
       }
     },
-    async updateProduct(context, payload) {
+    async updateUser(context, payload) {
       try {
         console.log(payload)
         const  msg  = await (await axios.patch(`${apiURL}users/${payload.id}`, payload.data)).data
         if (msg) {
           context.dispatch('fetchUsers')
-          toast.success(`${msg}`, {
+          toast.success(`${"Your Profile has been successfully updated"}`, {
             autoClose: 2000,
             position: toast.POSITION.BOTTOM_CENTER
           })
