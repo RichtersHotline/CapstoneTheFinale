@@ -6,6 +6,8 @@ import path from "path"//create express app
 const app = express()
 const port = +process.env.PORT || 4000// Middleware
 // creating an express app
+app.use(cors())
+
 app.use(
     
     express.static("./static"),
@@ -27,7 +29,6 @@ res.header("Access-Control-Expose-Headers", "Authorization");
 next()
 
 })
-app.use(cors())
 
 
 
