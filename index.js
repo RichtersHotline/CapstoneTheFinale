@@ -6,7 +6,6 @@ import path from "path"//create express app
 const app = express()
 const port = +process.env.PORT || 4000// Middleware
 // creating an express app
-app.use(cors())
 
 app.use(
     
@@ -16,6 +15,8 @@ app.use(
         extended: true
 
     }))
+    app.use(cors())
+
 app.use((req, res, next) => {
 
 res.header("Access-Control-Allow-Origin", "*");
