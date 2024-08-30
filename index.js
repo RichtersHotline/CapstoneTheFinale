@@ -27,6 +27,8 @@ res.header("Access-Control-Expose-Headers", "Authorization");
 next()
 
 })
+app.use(cors())
+
 
 
 // THIS IS THE ACTUAL ENDPOINT THAT THE USER WILL NEED TO ENTER TO GET TO RELEVANT PAGES
