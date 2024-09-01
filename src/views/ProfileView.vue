@@ -19,6 +19,12 @@
     class="btn btn-success" data-bs-toggle="modal" data-bs-target="#UserModel">
       Edit Profile
     </button>
+    <div class="deleteCon mt-3">
+    <button
+    class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteUser">
+      Delete Profile
+    </button>
+  </div>
 <router-link> 
     <p>View Post History</p>
 </router-link>
@@ -94,6 +100,31 @@
               </div>
             </div>
             </div>
+            <div class="modal fade" id="DeleteUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="exampleModalLabel">Deleting Your Profile....</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="row text-center">
+            <div class="col">
+        <h4>Enter Unique ID</h4>
+        <input type="number" id="InputDel" v-model="payload.userID">
+
+        <button type="submit" id="Deleter" @click.prevent="userDeletion">Delete</button>
+    </div>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</div>
+</div>
 </template>
 
 <script>
@@ -130,8 +161,25 @@ profileUpdate() {
 
 
       },
+      userDeletion() {
+  try {
 
+     this.$store.dispatch("deleteUser", this.payload.userID);
+
+
+  } catch (error) {
+
+    console.error(error);
+
+
+  }
+
+
+
+ },
 },
+
+
 computed: {
 User() {
 return this.$store.state.user;
