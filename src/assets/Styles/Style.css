@@ -11,6 +11,14 @@ margin:0;
 padding: 0;
 box-sizing:border-box;
 }
+.BHBTN {
+    color:white;
+    background-color:		#1c222e;
+    border:1px solid black;
+    display:block;
+   width:100%;
+   margin-bottom:10px;
+}
 :is(h1, h2, h3, h4, h5) {
 
     color:white !important;
@@ -255,7 +263,7 @@ opacity:0.4;
     }
     input[type=text] {
     
-        color:black;
+        color:white;
     
     }
     input[type=email] {
@@ -278,7 +286,7 @@ opacity:0.4;
     }
     textarea {
       resize:none !important;
-        color:black;
+        color:white !important;
     }
     .QuestionCon {
     
@@ -309,7 +317,6 @@ opacity:0.4;
        /* Splash Page Styling */
        .SplashContainer {
         background-color: #1F1F23;
-        opacity:0.9;
         width:450px;
         height:auto;
         margin:auto;
@@ -426,11 +433,12 @@ opacity:0.4;
            margin-left:10px;
        
        }
-       .leftCon {
-       width:75%;
-           display:flex;
-           justify-content: space-between;
-           
+       
+       .OverlayCon {
+
+        display:flex;
+ width:100%;
+ margin:auto;
        }
        .Content {
        
@@ -447,8 +455,7 @@ opacity:0.4;
        
        }
        .userBox {
-           width:300px;
-           height:500px;
+           width:20%;
            margin-top:20px;
            font-family:Arial, Helvetica, sans-serif;
        
@@ -456,15 +463,16 @@ opacity:0.4;
        .ImgBack {
         background-color:#1F1F23 !important;
         width:100%;
-       
+        margin:auto;
+       height:13rem;
        }
        .UserContent img {
        
-           margin-top:10px;
+           margin-top:22px;
            
        
                width:50%;
-               height:8.75rem;
+               height:9.75rem;
                border-radius:50%;
           margin-bottom:10px;
            
@@ -474,7 +482,7 @@ opacity:0.4;
        
            text-align:center;
           color:white;
-       
+        width:20rem;
        }
        
        .UserContent p {
@@ -507,11 +515,18 @@ opacity:0.4;
            display:flex;
        justify-content: flex-end
        ;}
+       .leftCon {
+        width:100%;
+        display:flex;
+        
+       }
        .MiddleCon {
-       width:50%;
-       display:flex;
-       flex-direction:column; 
-       
+        width:100%;
+       }
+       .Mid {
+      
+        width:200rem;
+
        }
        .Thought {
        
@@ -553,10 +568,17 @@ opacity:0.4;
            margin-top:10px;
            width:100%;
            margin-top:-17px;
-           height:30%;
+           height:10rem;
            background-color:#151519;
            border:none;
        }
+       .ProfilePicture {
+
+        background-color:#1F1F23 !important;
+        color:white !important;
+     padding:2px;
+     margin-top:10px;
+    }
 /* Profile Styling */
 
 #userName {
@@ -572,6 +594,18 @@ opacity:0.4;
 .modal h1 {
 
 color:black !important;
+
+}
+.UserMessage {
+
+    background-color:#151519;
+    padding:1.58rem;
+
+}
+#Warning {
+
+    color:red !important;
+    display:block;
 
 }
 /* Media Queries */

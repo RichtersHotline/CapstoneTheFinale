@@ -47,12 +47,12 @@ console.log("error")
     },
     async fetchOneUser(context, id) {
       try {
-        const result = await axios.get(`${apiURL}users/${id}`);
-        if (result.data) {
-          console.log(result.data)
-          context.commit('setSingleUser', result.data);
+        const {results} = await (await axios.get(`${apiURL}users/${id}`)).data;
+        if (results) {
+          console.log(results)
+          context.commit('setSingleUser', results);
         } else {
-          toast.error(`${result}`, {
+          toast.error(`${results}`, {
             autoClose: 2000,
             position: toast.POSITION.BOTTOM_CENTER,
           });
@@ -138,7 +138,7 @@ console.log("error")
 //Everything to do with Posts
 async fetchPosts(context) {
   try {
-    const results = await (await axios.get(`${apiURL}posts`)).data
+    const {results} = await (await axios.get(`${apiURL}posts`)).data
     if (results) {
       context.commit('setPosts', results)
     } else {
@@ -173,11 +173,11 @@ async fetchOnePost(context, id) {
 },
 async PostMessage(context, payload) {
   try {
-    const msg= await (await axios.post(`${apiURL}posts/post`, payload)).data
+    const msg = await (await axios.post(`${apiURL}posts/post`, payload)).data
     console.log(msg);
     if (msg) {
       context.dispatch('fetchPosts')
-      toast.success(`${msg}`, {
+      toast.success(`${"Your post has been successfully posted."}`, {
         autoClose: 2000,
         position: toast.POSITION.BOTTOM_CENTER
       })
