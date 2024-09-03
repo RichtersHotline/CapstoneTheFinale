@@ -6,7 +6,7 @@ import axios from 'axios'
 const apiURL = "https://home-of-the-broken-heroes.onrender.com/"
 export default createStore({
   state: {
-    users:null,
+    users:[],
     user: null,
     posts: null,
     post:null
@@ -71,7 +71,7 @@ console.log("error")
         if (msg) {
           context.dispatch('fetchUsers')
           toast.success(`${"You have been succesfully Registered"}`, {
-            autoClose: 2000,
+            autoClose: 5000,
             position: toast.POSITION.BOTTOM_CENTER
           })
         }
@@ -105,8 +105,8 @@ console.log("error")
         const  msg  = await (await axios.delete(`${apiURL}users/${id}`)).data
         if (msg) {
           context.dispatch('fetchUsers')
-          toast.success(`${msg}`, {
-            autoClose: 2000,
+          toast.success(`${"Thank you for your service. You have been discharged."}`, {
+            autoClose: 7000,
             position: toast.POSITION.BOTTOM_CENTER
           })
         }

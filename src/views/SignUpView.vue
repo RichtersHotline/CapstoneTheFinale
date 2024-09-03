@@ -5,7 +5,7 @@
       <h4 class="centereds2">Sign up is and always will be 100% free.</h4> 
     <img src="https://richtershotline.github.io/Pimages/Images/ManFlag.jpg" id="SignupImg" loading="lazy" class="img-fluid">
     <div class="Contact">
-    <form id="UserForm">
+    <form id="UserForm" @submit.prevent="Registration">
     <div class="row">
         <div class="col">
           
@@ -113,8 +113,13 @@ Registration() {
   try {
     console.log(this.payload);
     this.$store.dispatch("addAUser", this.payload);
-    alert("Thank you for registering")
-    window.location.href="/contact"
+    setTimeout(() => {
+
+window.location.href="/";
+
+
+
+}, "5000")
 
   } catch (error) {
 

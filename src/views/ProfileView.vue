@@ -9,9 +9,9 @@
             <img :src="User.UserImg" loading="lazy">
 
         </div>
-        <button data-bs-toggle="modal" data-bs-target="#UpdateProfilePicture">
+        <!-- <button data-bs-toggle="modal" data-bs-target="#UpdateProfilePicture">
           <i class="bi bi-camera-fill"></i>
-        </button>
+        </button> -->
           <div  v-if="User">
             <div class="profile" >
               <div class="profileContent">
@@ -152,7 +152,11 @@
             <div class="col">
               <h4>Enter User ID</h4>
               <input type="number" id="InputDel" v-model="payload.userID">
-            
+              <h4>Enter Hosted Link</h4>
+
+              <input type="text" id="userName" v-model="payload.UserImg">
+              <button type="submit" id="Deleter" @click.prevent="profilePictureUpdate">Profile Picture</button>
+
             </div>
 
           </div>
@@ -193,8 +197,8 @@ export default {
       payloadPosts: {
         Msg: "",
 
-      }
-
+      },
+      Confirmation:"Thank you for your service. You have been discharged."
 
 
     }
@@ -215,14 +219,20 @@ export default {
     },
     profilePictureUpdate() {
 
-      this.$store.dispatch('updateUser', {id: this.payload.userID, data: this.payload });
+      this.$store.dispatch('updateUser', {id: this.payload.userID, data: this.payload.UserImg});
 
     },
     userDeletion() {
       try {
         
         this.$store.dispatch("deleteUser", this.payload.userID);
+        setTimeout(() => {
 
+          window.location.href="/";
+          
+
+
+        }, "2000")
 
       } catch (error) {
 

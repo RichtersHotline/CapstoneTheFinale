@@ -263,7 +263,7 @@ opacity:0.4;
     }
     input[type=text] {
     
-        color:white;
+        color:black !important;
     
     }
     input[type=email] {
