@@ -9,7 +9,9 @@ export default createStore({
     users:[],
     user: null,
     posts: null,
-    post:null
+    post:null,
+    Reply:null,
+    Replies:null,
   },
   getters: {
   },
@@ -26,6 +28,15 @@ export default createStore({
     setSinglePost(state, value) {
       state.post = value;
     },
+    setReplies(state, value ) {
+    state.Replies = value;
+
+    },
+    setReply(state,value) {
+
+      state.Reply = value;
+
+    }
   },
   actions: {
     // Everything to do with users
@@ -212,6 +223,95 @@ async deleteMessage(context, id) {
     const  msg  = await (await axios.delete(`${apiURL}posts/${id}`)).data
     if (msg) {
       context.dispatch('fetchPosts')
+      toast.success(`${"Your post has been removed"}`, {
+        autoClose: 5000,
+        position: toast.POSITION.BOTTOM_CENTER
+      })
+    }
+  } catch (e) {
+    toast.error(`${e.message}`, {
+      autoClose: 2000,
+      position: toast.POSITION.BOTTOM_CENTER
+    })
+  }
+},
+// Replies
+async fetchReplies(context) {
+  try {
+    const {results} = await (await axios.get(`${apiURL}comment`)).data
+    if (results) {
+      context.commit('setReplies', results)
+    } else {
+console.log("error")
+    }
+  } catch (e) {
+    toast.error(`${e.message}`, {
+      autoClose: 2000,
+      position: toast.POSITION.BOTTOM_CENTER
+    })
+  }
+
+},
+async fetchOneReply(context, id) {
+  try {
+    const result = await axios.get(`${apiURL}comment/${id}`);
+    if (result.data) {
+      console.log(result.data)
+      context.commit('setReply', result.data);
+    } else {
+      toast.error(`${result}`, {
+        autoClose: 2000,
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
+    }
+  } catch (e) {
+    toast.error(`${e.message}`, {
+      autoClose: 2000,
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
+  }
+},
+async PostReply(context, payload) {
+  try {
+    const msg = await (await axios.post(`${apiURL}comment/post/comment`, payload)).data
+    console.log(msg);
+    if (msg) {
+      context.dispatch('fetchReplies')
+      toast.success(`${"Your post has been successfully posted."}`, {
+        autoClose: 2000,
+        position: toast.POSITION.BOTTOM_CENTER
+      })
+    }
+  } catch (e) {
+    toast.error(`${e.message}`, {
+      autoClose: 2000,
+      position: toast.POSITION.BOTTOM_CENTER
+    })
+  }
+},
+async updateReply(context, payload) {
+  try {
+    console.log(payload)
+    const  {message}  = await (await axios.patch(`${apiURL}comment/${payload.id}`, payload.data)).data
+    if (message) {
+      context.dispatch('fetchReplies')
+      toast.success(`${message}`, {
+        autoClose: 2000,
+        position: toast.POSITION.BOTTOM_CENTER
+      })
+    }
+  } catch (e) {
+    toast.error(`${e.message}`, {
+      autoClose: 2000,
+      position: toast.POSITION.BOTTOM_CENTER
+    })
+  }
+},
+async deleteReply(context, id) {
+  try {
+    const  msg  = await (await axios.delete(`${apiURL}comment/${id}`)).data
+    if (msg) {
+      context.dispatch('fetchReplies')
       toast.success(`${"Your post has been removed"}`, {
         autoClose: 5000,
         position: toast.POSITION.BOTTOM_CENTER
