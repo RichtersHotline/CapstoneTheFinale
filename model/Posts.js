@@ -39,7 +39,7 @@ try {
     db.query(Query, (err, results) => {
         if (err) throw new Error("Post could not be retrieved");
         res.json({
-            status: res/statusCode,
+            status: res.statusCode,
             results,
         });
     });
