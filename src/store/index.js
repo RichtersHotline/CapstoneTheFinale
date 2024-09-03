@@ -192,10 +192,10 @@ async PostMessage(context, payload) {
 async updateMessage(context, payload) {
   try {
     console.log(payload)
-    const  msg  = await (await axios.patch(`${apiURL}posts/${payload.id}`, payload.data)).data
-    if (msg) {
+    const  {message}  = await (await axios.patch(`${apiURL}posts/${payload.id}`, payload.data)).data
+    if (message) {
       context.dispatch('fetchPosts')
-      toast.success(`${msg}`, {
+      toast.success(`${message}`, {
         autoClose: 2000,
         position: toast.POSITION.BOTTOM_CENTER
       })
@@ -212,8 +212,8 @@ async deleteMessage(context, id) {
     const  msg  = await (await axios.delete(`${apiURL}posts/${id}`)).data
     if (msg) {
       context.dispatch('fetchPosts')
-      toast.success(`${msg}`, {
-        autoClose: 2000,
+      toast.success(`${"Your post has been removed"}`, {
+        autoClose: 5000,
         position: toast.POSITION.BOTTOM_CENTER
       })
     }
