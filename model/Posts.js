@@ -62,7 +62,7 @@ try {
           `;
         db.query(Query, [req.body], (err) => {
           if (err)
-            throw new Error("unable to update post. Contact site Admin");
+            throw new Error(err);
           res.json({
             status: res.statusCode,
             message: "post Updated.",
@@ -142,6 +142,35 @@ async postMsg(req, res) {
       });
     }
   }
+<<<<<<< HEAD
+=======
+//   Updating Posts
+async updatePost(req, res) {
+    try {
+      const Query = `
+        
+        update UserPosts
+        set ?
+        where postID = ${req.params.id};
+        
+        
+        `;
+      db.query(Query, [req.body], (err) => {
+        if (err)
+          throw new Error(err.message);
+        res.json({
+          status: res.statusCode,
+          message: "post Updated.",
+        });
+      });
+    } catch (e) {
+      res.json({
+        status: 400,
+        eror: e.message,
+      });
+    }
+  }
+>>>>>>> 82d2d1b1135600b2657e3242fbad798226548f51
 
     
 }
