@@ -33,7 +33,7 @@ try {
     const Query = `
     select postID, Msg, DatePosted, userID, Salutes, Replies
     from UserPosts
-    where productID = ${req.params.id}
+    where postID = ${req.params.id}
 
     `;
     db.query(Query, (err, results) => {
