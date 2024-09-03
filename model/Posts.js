@@ -142,8 +142,7 @@ async postMsg(req, res) {
       });
     }
   }
-<<<<<<< HEAD
-=======
+
 //   Updating Posts
 async updatePost(req, res) {
     try {
@@ -170,7 +169,6 @@ async updatePost(req, res) {
       });
     }
   }
->>>>>>> 82d2d1b1135600b2657e3242fbad798226548f51
 
     
 }
