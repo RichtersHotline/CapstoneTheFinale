@@ -622,7 +622,12 @@ color:black !important;
     margin:auto;
 
 }
+.ReplyContainer { 
 
+    width:48%;
+    margin:auto;
+
+}
 .NameBG {
 
     background-color:#1F1F23;

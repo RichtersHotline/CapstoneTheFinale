@@ -215,6 +215,28 @@
     </div>
 
   </div>
+  <div v-if="Replies">
+  <div class="ReplyContainer" v-for="reply in Replies" :key="reply.commentID">
+    <h5 class="NameBG">John Doe replied on {{reply.DatePosted }}</h5>
+    <div class="Messages">
+
+  <h5 class="UserMessage">{{ reply.Reply}}</h5>
+  <div class="deletePortion">
+        <button class="PostDelBtn" @click.prevent="replyDeletion(reply.commentID)">
+          Delete 
+        </button>
+        <button class="PostDelBtn" data-bs-target="#updatePost" data-bs-toggle="modal">
+          Edit 
+        </button>
+      </div>
+
+
+
+  </div>
+
+
+  </div>
+</div>
 </div>
 </template>
 
@@ -316,6 +338,17 @@ console.log(this.payloadPosts.Msg)
 
       }
 
+    },
+    fetchReplies() {
+
+      this.$store.dispatch("fetchReplies");
+
+
+    },
+    replyDeletion(commentID) {
+
+      this.$store.dispatch("deleteReply", commentID);
+
     }
   },
 
@@ -329,6 +362,11 @@ console.log(this.payloadPosts.Msg)
 
       return this.$store.state.posts;
 
+    },
+    Replies() {
+
+      return this.$store.state.Replies
+
     }
 
   },
@@ -337,6 +375,8 @@ console.log(this.payloadPosts.Msg)
     console.log(this.user)
     this.fetchPosts();
     console.log(this.post)
+    this.fetchReplies();
+    console.log(this.Replies)
   }
 }
 
