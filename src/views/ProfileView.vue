@@ -48,7 +48,7 @@
     </div>
     <div class="Mid" v-if="User">
       <div class="MiddleCon">
-      <p class="Thought">Speak freely, {{ User.firstName }} </p>
+      <h5 class="Thought">Speak freely, {{ User.firstName }} </h5>
       <textarea id="Msg" v-model="payloadPosts.Msg" placeholder="Write your message..."></textarea>
       <div class="Buttons">
         <button class="Send" type="submit" @click.prevent="PostMessage">Post</button>
@@ -138,6 +138,33 @@
       </div>
     </div>
   </div>
+  <div class="modal fade" id="updatePost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Editing Post</h1>
+          
+
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row text-center">
+            <div class="col">
+              <h4>Enter Post ID</h4>
+              <input type="number" id="InputDel" v-model="payload.postID">
+              <h4>Enter New Message</h4>
+              <input type="text" id="InputDel" v-model="payloadModal.Msg">
+              <button type="button" id="Deleter" @click.prevent="postUpdate">Edit Post</button>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="modal fade" id="UpdateProfilePicture" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -168,9 +195,20 @@
     </div>
   </div>
   <div v-if="fetchPosts">
-    <div v-for="post in Post" :key="post.postID">
+    <div class="MessageContainer" v-for="post in Post" :key="post.postID">
+      <h5 class="NameBG">John Doe posted on {{post.DatePosted}}</h5>
+      <div class="Messages">
       <h5 class="UserMessage">{{ post.Msg }}</h5>
-
+      <h5>{{post.postID}}</h5>
+      <div class="deletePortion">
+        <button class="PostDelBtn" @click.prevent="postDeletion(post.postID)">
+          Delete 
+        </button>
+        <button class="PostDelBtn" data-bs-target="#updatePost" data-bs-toggle="modal">
+          Edit 
+        </button>
+      </div>
+    </div>
 
 
 
@@ -198,6 +236,13 @@ export default {
         Msg: "",
 
       },
+
+      payloadModal: {
+
+           Msg:""
+
+        },
+
       Confirmation:"Thank you for your service. You have been discharged."
 
 
@@ -244,13 +289,26 @@ export default {
 
 
     },
+    postDeletion(postID) {
+
+      this.$store.dispatch("deleteMessage", postID);
+
+
+    },
+    postUpdate() {
+    
+      this.$store.dispatch("updateMessage", { id: this.payload.postID, data: this.payloadModal.Msg })
+console.log(this.payloadPosts.Msg)
+    },
     fetchPosts() {
 
       this.$store.dispatch("fetchPosts");
     },
     PostMessage() {
       try {
-        this.$store.dispatch("PostMessage", this.payloadPosts);
+        this.$store.dispatch("PostMessage", this.payloadPosts); 
+        document.getElementById("Msg").value = ""
+
         console.log(this.payloadPosts)
       } catch (e) {
 
