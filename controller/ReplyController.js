@@ -10,7 +10,7 @@ RepliesRouter.use(bodyParser.json())
 
 RepliesRouter.get("/",  (req, res) => {
 
-    Replies.fetchAllPosts(req, res)
+    Replies.fetchReplies(req, res)
     
     
     })
