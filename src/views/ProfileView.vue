@@ -194,6 +194,32 @@
       </div>
     </div>
   </div>
+  <div class="modal fade" id="postReply" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Your Reply...</h1>
+
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row text-center">
+            <div class="col">
+              <h4>Enter Your Message</h4>
+              <input type="text" id="InputDel" v-model="payloadReply.Reply">
+
+
+              <button type="submit" id="Deleter" @click.prevent="postReply">Reply</button>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div v-if="fetchPosts">
     <div class="MessageContainer" v-for="post in Post" :key="post.postID">
       <h5 class="NameBG">John Doe posted on {{post.DatePosted}}</h5>
@@ -206,6 +232,9 @@
         </button>
         <button class="PostDelBtn" data-bs-target="#updatePost" data-bs-toggle="modal">
           Edit 
+        </button>
+        <button class="PostDelBtn" data-bs-toggle="modal" data-bs-target="#postReply">
+          Reply 
         </button>
       </div>
     </div>
@@ -227,6 +256,9 @@
         </button>
         <button class="PostDelBtn" data-bs-target="#updatePost" data-bs-toggle="modal">
           Edit 
+        </button>
+        <button class="PostDelBtn" data-bs-toggle="modal" data-bs-target="#postReply">
+          Reply 
         </button>
       </div>
 
@@ -262,6 +294,12 @@ export default {
       payloadModal: {
 
            Msg:""
+
+        },
+        payloadReply: {
+          Reply:""
+
+
 
         },
 
@@ -343,6 +381,12 @@ console.log(this.payloadPosts.Msg)
 
       this.$store.dispatch("fetchReplies");
 
+
+    },
+    postReply() {
+
+    this.$store.dispatch("PostReply", this.payloadReply);
+    console.log(this.payloadReply)
 
     },
     replyDeletion(commentID) {
