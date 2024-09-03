@@ -50,7 +50,31 @@ try {
     });
 }
     }
-
+    async updatePost(req, res) {
+      try {
+        const Query = `
+          
+          update UserPosts
+          set ?
+          where postID = ${req.params.id};
+          
+          
+          `;
+        db.query(Query, [req.body], (err) => {
+          if (err)
+            throw new Error("unable to update post. Contact site Admin");
+          res.json({
+            status: res.statusCode,
+            message: "post Updated.",
+          });
+        });
+      } catch (e) {
+        res.json({
+          status: 400,
+          eror: e.message,
+        });
+      }
+    }
 
 
     
@@ -91,7 +115,10 @@ async postMsg(req, res) {
   }
 
 //   Deleting Posts 
-deletePost (req, res) {
+
+//   Updating Posts
+
+  deletePost (req, res) {
     try {
       const Query = ` 
     delete from UserPosts
@@ -112,32 +139,6 @@ deletePost (req, res) {
       res.json({
         status: 404,
         err: e.message,
-      });
-    }
-  }
-//   Updating Posts
-async updatePost(req, res) {
-    try {
-      const Query = `
-        
-        update UserPosts
-        set ?
-        where postID = ${req.params.id};
-        
-        
-        `;
-      db.query(Query, [req.body], (err) => {
-        if (err)
-          throw new Error("unable to update post. Contact site Admin");
-        res.json({
-          status: res.statusCode,
-          message: "post Updated.",
-        });
-      });
-    } catch (e) {
-      res.json({
-        status: 400,
-        eror: e.message,
       });
     }
   }
