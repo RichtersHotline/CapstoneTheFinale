@@ -17,14 +17,14 @@ RepliesRouter.get("/",  (req, res) => {
     
     RepliesRouter.get("/:id",  (req, res) => {
 
-    Replies.fetchSingleReplies(req, res)
+    Replies.fetchSingleReply(req, res)
     
     
     })
     // Adding User
     RepliesRouter.post("/post/comment", (req, res) => {
 
-        Replies.postReplies(req, res)
+        Replies.postReply(req, res)
 
 
 
@@ -33,7 +33,7 @@ RepliesRouter.get("/",  (req, res) => {
      // Updates
      RepliesRouter.patch("/:id", (req, res) => {
     
-        Replies.updateReplies(req, res)
+        Replies.updateReply(req, res)
         
         
         }) 
@@ -41,7 +41,7 @@ RepliesRouter.get("/",  (req, res) => {
         // Delete
         RepliesRouter.delete("/:id",  (req, res) => {
 
-            Replies.deleteReplies(req, res)
+            Replies.deleteReply(req, res)
             
             
             })

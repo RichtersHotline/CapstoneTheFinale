@@ -3,6 +3,7 @@ import cors from "cors"
 import {PostersRouter, express} from "./controller/UsersController.js"
 import {MessageRouter} from "./controller/PostController.js"
 import path from "path"//create express app
+import { RepliesRouter } from "./controller/ReplyController.js"
 const app = express()
 const port = +process.env.PORT || 4000// Middleware
 // creating an express app
@@ -36,7 +37,7 @@ app.use(cors())
 
 app.use("/users", PostersRouter)
 app.use("/posts", MessageRouter)
-
+app.use("/posts/comment", RepliesRouter)
 app.get("^/$|/All", (req, res) => {
 
     res.status(200).sendFile(path.resolve("./static/HTML/index.html"))
