@@ -128,7 +128,7 @@ async updatePost(req, res) {
         `;
       db.query(Query, [req.body], (err) => {
         if (err)
-          throw new Error("unable to update post. Contact site Admin");
+          throw new Error(err.message);
         res.json({
           status: res.statusCode,
           message: "post Updated.",
