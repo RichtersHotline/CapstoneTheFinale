@@ -2,8 +2,8 @@
 import cors from "cors"
 import {PostersRouter, express} from "./controller/UsersController.js"
 import {MessageRouter} from "./controller/PostController.js"
-import path from "path"//create express app
 import { RepliesRouter } from "./controller/ReplyController.js"
+import path from "path"//create express app
 const app = express()
 const port = +process.env.PORT || 4000// Middleware
 // creating an express app
