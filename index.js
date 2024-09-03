@@ -37,7 +37,7 @@ app.use(cors())
 
 app.use("/users", PostersRouter)
 app.use("/posts", MessageRouter)
-app.use("/posts/comment", RepliesRouter)
+app.use("/comment", RepliesRouter)
 app.get("^/$|/All", (req, res) => {
 
     res.status(200).sendFile(path.resolve("./static/HTML/index.html"))
