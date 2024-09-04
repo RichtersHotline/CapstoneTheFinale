@@ -6,7 +6,7 @@ import { RepliesRouter } from "./controller/ReplyController.js"
 import path from "path"//create express app
 const app = express()
 const port = +process.env.PORT || 4000// Middleware
-// creating an express app
+// creating an express appp
 
 app.use(
     
