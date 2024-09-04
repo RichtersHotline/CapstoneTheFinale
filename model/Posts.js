@@ -86,6 +86,7 @@ async postMsg(req, res) {
       let Add = {
         Msg: data.Msg,
         DatePosted: data.DatePosted,
+        PostImg: data.PostImg
       };
   
       const Query = `
