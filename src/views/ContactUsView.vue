@@ -70,7 +70,7 @@
             </div>
         </div>
         <div class="BtnCenter">
-        <button id="VipBtn" type="submit" @click="Validation()"  class="mb-5">Send Your Message</button>
+        <button id="VipBtn" type="submit" @click="Validation()"  class="mb-5 ">Send Your Message</button>
         <button id="VipBtn" type="button" @click="Clear()" class="mb-5">Clear</button>
         <span id="cleartxt"></span>
         </div>
@@ -108,6 +108,8 @@
 
 </template>
 <script>
+import { toast } from "vue3-toastify"
+import "vue3-toastify/dist/index.css"
 export default {
 components: {
 
@@ -127,20 +129,29 @@ methods: {
 
 let UserEntries = document.getElementById("UserForm")
 UserEntries.reset()
-alert("Your form has been cleared")
+toast.success(`${"Your form has been reset."}`, {
+          autoClose: 5000,
+          position: toast.POSITION.BOTTOM_CENTER
+        })
   },
   Validation() {
     let Email = document.getElementsByName("Email")[0]
 
   let UserEntry = document.getElementById("ContactForm")
   if (!Email.value.includes('@')) {
-     alert("You have entered an invalid Email Address")
+    toast.error(`${"You have entered an invalid email address."}`, {
+          autoClose: 5000,
+          position: toast.POSITION.BOTTOM_CENTER
+        })
  } 
 
 switch(UserEntry.value) {
 
   case "":
-    alert("Please enter your details")
+  toast.error(`${"You have not entered any values."}`, {
+          autoClose: 5000,
+          position: toast.POSITION.BOTTOM_CENTER
+        })
 break;
 case 70: 
 alert("Please enter values that are less than 70 characters")
