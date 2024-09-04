@@ -258,7 +258,7 @@ opacity:0.4;
         margin:auto;
         outline:1px solid black;
         border-radius:7px;
-
+        color:black !important;
     
     }
     input[type=text] {
@@ -286,7 +286,7 @@ opacity:0.4;
     }
     textarea {
       resize:none !important;
-        color:white !important;
+        color:black !important;
     }
     .QuestionCon {
     
