@@ -10,7 +10,7 @@ class Posts {
     fetchAllPosts (req, res) {
         try {
             const Query = `
-            select postID, Msg, DatePosted, userID, Salutes, Replies
+            select postID, Msg, DatePosted, userID, Salutes, Replies, PostImg
             from UserPosts
             
             `;
@@ -31,7 +31,7 @@ class Posts {
     fetchSinglePost(req, res) {
 try {
     const Query = `
-    select postID, Msg, DatePosted, userID, Salutes, Replies
+    select postID, Msg, DatePosted, userID, Salutes, Replies, PostImg
     from UserPosts
     where postID = ${req.params.id}
 
