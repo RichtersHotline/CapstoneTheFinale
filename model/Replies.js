@@ -9,7 +9,7 @@ class Reply {
 fetchSingleReply (req, res) {
     try {
         const Query = `
-        select commentID, Reply, DatePosted, userID, postID
+        select commentID, Reply, DatePosted, userID, postID, ReplyImg
         from Comments
         where commentID = ${req.params.id}
     
@@ -37,7 +37,7 @@ fetchSingleReply (req, res) {
 fetchReplies (req, res) {
     try {
         const Query = `
-        select commentID, Reply, DatePosted, userID, postID
+        select commentID, Reply, DatePosted, userID, postID, ReplyImg
         from Comments    
         `;   
         db.query(Query, (err, results) => {
