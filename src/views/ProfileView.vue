@@ -143,13 +143,18 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Inserting an Image...</h1>
-          <input type="numtextber" id="InputDel" v-model="payloadPosts.PostImg">
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="row text-center">
             <div class="col">
-              <button type="submit" id="Deleter" @click.prevent="imageAddition">Delete</button>
+              <h4>Your Entered Message</h4>
+              <input type="text" id="InputDel" readonly v-model="payloadPosts.Msg">
+              <h4>Insert Hosted Link</h4>
+              <input type="text" id="InputDel" v-model="payloadPosts.PostImg">
+              <div class="ImageAdditionCon mt-4">
+              <button type="submit" id="Deleter" @click.prevent="imageAddition">Add Image</button>
+            </div>
             </div>
 
           </div>
@@ -201,6 +206,7 @@
             <div class="col">
               <h4>Enter User ID</h4>
               <input type="number" id="InputDel" v-model="payload.userID">
+      
               <h4>Enter Hosted Link</h4>
 
               <input type="text" id="userName" v-model="payload.UserImg">
@@ -229,7 +235,8 @@
             <div class="col">
               <h4>Enter Your Message</h4>
               <input type="text" id="InputDel" v-model="payloadReply.Reply">
-
+              <h4>Insert Your Image, optional</h4>
+              <input type="text" id="InputDel" v-model="payloadReply.ReplyImg">
 
               <button type="submit" id="Deleter" @click.prevent="postReply">Reply</button>
             </div>
@@ -275,8 +282,9 @@
       <h5 class="NameBG">John Doe posted on {{post.DatePosted}}</h5>
       <div class="Messages">
       <h5 class="UserMessage">{{ post.Msg }}</h5>
-      <h5>{{post.postID}}</h5>
+      <div class="PostImgContainer">
       <img :src="post.PostImg" class="PostImg" loading="lazy">
+    </div>
       <div class="deletePortion">
         <button class="PostDelBtn" @click.prevent="postDeletion(post.postID)">
           Delete 
@@ -299,9 +307,10 @@
   <div class="ReplyContainer" v-for="reply in Replies" :key="reply.commentID">
     <h5 class="NameBG">John Doe replied on {{reply.DatePosted }}</h5>
     <div class="Messages">
-
   <h5 class="UserMessage">{{ reply.Reply}}</h5>
- 
+  <div class="PostImgContainer">
+    <img :src="reply.ReplyImg" class="PostImg" loading="lazy">
+  </div>
 
   <div class="deletePortion">
         <button class="PostDelBtn" @click.prevent="replyDeletion(reply.commentID)">
@@ -350,8 +359,8 @@ export default {
 
         },
         payloadReply: {
-          Reply:""
-
+          Reply:"",
+          ReplyImg:""
 
 
         },
