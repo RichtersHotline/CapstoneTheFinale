@@ -92,6 +92,7 @@ async updateReply(req, res) {
       let Add = {
         Reply: data.Reply,
         DatePosted: data.DatePosted,
+        ReplyImg: data.ReplyImg
       };
   
       const Query = `
