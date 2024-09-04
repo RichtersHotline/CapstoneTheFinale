@@ -635,7 +635,7 @@ color:black !important;
 
 }
 .deletePortion {
-
+   
     display:flex;
     justify-content: flex-end;
 
@@ -650,6 +650,16 @@ color:black !important;
       font-weight: 300;
       font-style: normal;
       margin-right:10px;
+
+}
+.ImageHandling {
+
+}
+.PostImg {
+
+    width:300px;
+    height:300px;
+
 
 }
 /* Media Queries */

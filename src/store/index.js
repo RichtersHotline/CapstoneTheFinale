@@ -277,7 +277,7 @@ async PostReply(context, payload) {
     console.log(msg);
     if (msg) {
       context.dispatch('fetchReplies')
-      toast.success(`${"Your post has been successfully posted."}`, {
+      toast.success(`${"Your reply has been successfully posted."}`, {
         autoClose: 2000,
         position: toast.POSITION.BOTTOM_CENTER
       })
@@ -289,10 +289,10 @@ async PostReply(context, payload) {
     })
   }
 },
-async updateReply(context, payload) {
+async updateReply(context, payload,) {
   try {
     console.log(payload)
-    const  {message}  = await (await axios.patch(`${apiURL}comment/${payload.id}`, payload.data)).data
+    const  message  = await (await axios.patch(`${apiURL}comment/${payload.id}`, payload.data)).data
     if (message) {
       context.dispatch('fetchReplies')
       toast.success(`${message}`, {
@@ -312,7 +312,7 @@ async deleteReply(context, id) {
     const  msg  = await (await axios.delete(`${apiURL}comment/${id}`)).data
     if (msg) {
       context.dispatch('fetchReplies')
-      toast.success(`${"Your post has been removed"}`, {
+      toast.success(`${"Your reply has been removed"}`, {
         autoClose: 5000,
         position: toast.POSITION.BOTTOM_CENTER
       })

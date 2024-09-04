@@ -50,18 +50,18 @@
       <div class="MiddleCon">
       <h5 class="Thought">Speak freely, {{ User.firstName }} </h5>
       <textarea id="Msg" v-model="payloadPosts.Msg" placeholder="Write your message..."></textarea>
+      <div class="ImageHandling">
+        <button class="PostDelBtn" data-bs-toggle="modal" data-bs-target="#ImagePoster">
+          <i class="bi bi-file-earmark-image-fill"></i>
+        </button>
+      </div>
       <div class="Buttons">
         <button class="Send" type="submit" @click.prevent="PostMessage">Post</button>
       </div>
-      <div class="PostArea">
-        <div class="PostedMsg">
-          <p id="Posted"></p>
-
-          <span id="Post"></span>
-        </div>
-      </div>
+   
 
     </div>
+
   </div>
 
 
@@ -128,6 +128,28 @@
               <input type="number" id="InputDel" v-model="payload.userID">
 
               <button type="submit" id="Deleter" @click.prevent="userDeletion">Delete</button>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="ImagePoster" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Inserting an Image...</h1>
+          <input type="numtextber" id="InputDel" v-model="payloadPosts.PostImg">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row text-center">
+            <div class="col">
+              <button type="submit" id="Deleter" @click.prevent="imageAddition">Delete</button>
             </div>
 
           </div>
@@ -220,12 +242,41 @@
       </div>
     </div>
   </div>
+  <div class="modal fade" id="updateReply" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Your Reply...</h1>
+
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row text-center">
+            <div class="col">
+              <h4>Enter Reply ID</h4>
+              <input type="text" id="InputDel" v-model="this.payload.commentID">
+              <h4>Enter Your new Reply</h4>
+              <input type="text" id="InputDel" v-model="payloadReply.Reply">
+
+
+              <button type="button" id="Deleter" @click.prevent="replyUpdation">Reply</button>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div v-if="fetchPosts">
     <div class="MessageContainer" v-for="post in Post" :key="post.postID">
       <h5 class="NameBG">John Doe posted on {{post.DatePosted}}</h5>
       <div class="Messages">
       <h5 class="UserMessage">{{ post.Msg }}</h5>
       <h5>{{post.postID}}</h5>
+      <img :src="post.PostImg" class="PostImg" loading="lazy">
       <div class="deletePortion">
         <button class="PostDelBtn" @click.prevent="postDeletion(post.postID)">
           Delete 
@@ -250,11 +301,13 @@
     <div class="Messages">
 
   <h5 class="UserMessage">{{ reply.Reply}}</h5>
+ 
+
   <div class="deletePortion">
         <button class="PostDelBtn" @click.prevent="replyDeletion(reply.commentID)">
           Delete 
         </button>
-        <button class="PostDelBtn" data-bs-target="#updatePost" data-bs-toggle="modal">
+        <button class="PostDelBtn" data-bs-target="#updateReply" data-bs-toggle="modal">
           Edit 
         </button>
         <button class="PostDelBtn" data-bs-toggle="modal" data-bs-target="#postReply">
@@ -288,7 +341,7 @@ export default {
       },
       payloadPosts: {
         Msg: "",
-
+        PostImg:""
       },
 
       payloadModal: {
@@ -377,6 +430,19 @@ console.log(this.payloadPosts.Msg)
       }
 
     },
+    imageAddition() {
+
+      try {
+   this.$store.dispatch("PostMessage", this.payloadPosts)
+   console.log(this.payloadPosts)
+
+
+    } catch(e) {
+
+      console.log("error")
+
+    }
+  },
     fetchReplies() {
 
       this.$store.dispatch("fetchReplies");
@@ -393,7 +459,14 @@ console.log(this.payloadPosts.Msg)
 
       this.$store.dispatch("deleteReply", commentID);
 
+    },
+    replyUpdation() {
+      this.$store.dispatch('updateReply', { id: this.payload.commentID, data: this.payloadReply.Reply });
+      
+      console.log( "Id" + this.payload.commentID, "Data" + this.payloadReply.Reply)    
+
     }
+     
   },
 
 
