@@ -23,6 +23,12 @@ box-sizing:border-box;
     display:block;
    width:100%;
    margin-bottom:10px;
+   &:hover {
+
+    background-color:#131720;
+
+
+   }
 }
 :is(h1, h2, h3, h4, h5) {
 
@@ -318,6 +324,12 @@ opacity:0.4;
        color:white;
        margin-top:20px;
        text-align:center;
+       &:hover {
+
+        background-color:#131720;
+
+
+       }
        }
        /* Splash Page Styling */
        .SplashContainer {
@@ -589,6 +601,7 @@ opacity:0.4;
            height:10rem;
            background-color:#151519;
            border:none;
+           color:white !important;
        }
        .ProfilePicture {
 
@@ -668,7 +681,12 @@ color:black !important;
       font-weight: 300;
       font-style: normal;
       margin-right:10px;
+      &:hover {
 
+        color:#b9bcc4 !important;
+
+
+       }
 }
 .ImageHandling {
 
@@ -939,6 +957,12 @@ font-size:12px;
         color:white;
         margin-top:9px;
         text-align:center;
+        &:hover {
+
+            background-color:#131720;
+    
+    
+           }
        
        }
      
@@ -1010,6 +1034,12 @@ font-size:12px;
    color:white;
    margin-top:20px;
    text-align:center;
+   &:hover {
+
+    background-color:#131720;
+
+
+   }
 
    }
    /* Sign Up Queries */

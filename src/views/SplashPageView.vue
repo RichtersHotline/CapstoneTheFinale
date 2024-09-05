@@ -106,5 +106,20 @@ toast.success(`${"Welcome Owner."}`, {
   }
 };
 </script>
+<style scoped>
+
+.Background{
+
+    padding:0 !important;
+
+}
+.container-fluid {
+
+    padding:0 !important;
+
+}
+
+
+</style>
 
 
