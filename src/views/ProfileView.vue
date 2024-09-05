@@ -40,7 +40,7 @@
           </div>
           <div v-else>
 
-            <p>not found</p>
+<LoadingSpinner/>
 
           </div>
         </div>
@@ -63,7 +63,11 @@
     </div>
 
   </div>
+  <div v-else>
 
+    <LoadingSpinner/>
+    
+              </div>
 
 
 
@@ -303,6 +307,11 @@
     </div>
 
   </div>
+  <div v-else>
+
+    <LoadingSpinner/>
+    
+              </div>
   <div v-if="Replies">
   <div class="ReplyContainer" v-for="reply in Replies" :key="reply.commentID">
     <h5 class="NameBG">John Doe replied on {{reply.DatePosted }}</h5>
@@ -331,10 +340,16 @@
 
   </div>
 </div>
+<div v-else>
+
+  <LoadingSpinner/>
+  
+            </div>
 </div>
 </template>
 
 <script>
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
 export default {
   data() {
     return {
@@ -371,6 +386,10 @@ export default {
     }
 
 
+
+  },
+  components: {
+LoadingSpinner
 
   },
   methods: {
