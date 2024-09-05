@@ -131,7 +131,9 @@ let UserEntries = document.getElementById("UserForm")
 UserEntries.reset()
 toast.success(`${"Your form has been reset."}`, {
           autoClose: 5000,
-          position: toast.POSITION.BOTTOM_CENTER
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
+
         })
   },
   Validation() {
@@ -141,7 +143,9 @@ toast.success(`${"Your form has been reset."}`, {
   if (!Email.value.includes('@')) {
     toast.error(`${"You have entered an invalid email address."}`, {
           autoClose: 5000,
-          position: toast.POSITION.BOTTOM_CENTER
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
+
         })
  } 
 
@@ -150,7 +154,9 @@ switch(UserEntry.value) {
   case "":
   toast.error(`${"You have not entered any values."}`, {
           autoClose: 5000,
-          position: toast.POSITION.BOTTOM_CENTER
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
+
         })
 break;
 case 70: 

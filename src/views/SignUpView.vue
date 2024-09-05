@@ -78,6 +78,8 @@
 </template>
 <script>
 // import axios from "axios";
+import { toast } from "vue3-toastify"
+import "vue3-toastify/dist/index.css"
 export default {
 data() {
 return {
@@ -123,8 +125,12 @@ window.location.href="/";
 
   } catch (error) {
 
-    alert("Registration could not be completed")
+    toast.error(`${"Registration could not be completed. Please try again later."}`, {
+          autoClose: 5000,
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
 
+        })
 
   }
 
