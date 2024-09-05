@@ -1,5 +1,5 @@
 <template>
-<div class="container-fluid Background">
+<div class="container-fluid Background" id="BG">
     <h2 class="text-center Welcome">Welcome, Hero</h2>
     <h5 class="text-center Welcome">Home Of The Broken Heroes </h5>
 
@@ -102,7 +102,8 @@ toast.success(`${"Welcome Owner."}`, {
 
         })
       }
-    }
+    },
+  
   }
 };
 </script>
