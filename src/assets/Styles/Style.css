@@ -11,6 +11,11 @@ margin:0;
 padding: 0;
 box-sizing:border-box;
 }
+.container-fluid {
+
+    /* padding:0 !important; */
+
+}
 .BHBTN {
     color:white;
     background-color:		#1c222e;
@@ -354,6 +359,13 @@ opacity:0.4;
 
 
        }
+       }
+       .Welcome {
+        text-shadow:1px 1px black;
+        font-family: "Darker Grotesque", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+
        }
        .TextContent {
 

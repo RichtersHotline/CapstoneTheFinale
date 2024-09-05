@@ -1,7 +1,7 @@
 <template>
 <div class="container-fluid Background">
-    <h2 class="text-center">Welcome, Hero</h2>
-    <h5 class="text-center">Home Of The Broken Heroes </h5>
+    <h2 class="text-center Welcome">Welcome, Hero</h2>
+    <h5 class="text-center Welcome">Home Of The Broken Heroes </h5>
 
 <div class="SplashContainer">
 <div class="TextContent">
@@ -43,6 +43,39 @@ export default {
     async login() {
       console.log("Email Address:", this.emailAddress);
       console.log("Entered Password", this.userPwd);
+
+      let UserEntry = document.getElementById("LoginForm")
+      let Email = document.getElementsByName("Email")[0]
+      if (!Email.value.includes('@')) {
+    toast.error(`${"You have entered an invalid email address."}`, {
+          autoClose: 5000,
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
+
+        })
+ } 
+ switch(UserEntry.value) {
+
+case "":
+toast.error(`${"You have not filled out a field value."}`, {
+        autoClose: 5000,
+        position: toast.POSITION.BOTTOM_CENTER,
+        theme:'dark'
+
+      })
+break;
+case 70: 
+alert("Please enter values that are less than 70 characters")
+break;
+case "Richter" :
+toast.success(`${"Welcome Owner."}`, {
+        autoClose: 5000,
+        position: toast.POSITION.BOTTOM_CENTER,
+        theme:'dark'
+
+      })}
+
+    //Login Functionality
       try {
         const response = await axios.post('https://home-of-the-broken-heroes.onrender.com/users/login', {
             emailAddress: this.emailAddress,
