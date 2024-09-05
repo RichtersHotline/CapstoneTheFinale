@@ -51,7 +51,9 @@ console.log("error")
       } catch (e) {
         toast.error(`${e.message}`, {
           autoClose: 2000,
-          position: toast.POSITION.BOTTOM_CENTER
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
+
         })
       }
 
@@ -66,12 +68,16 @@ console.log("error")
           toast.error(`${results}`, {
             autoClose: 2000,
             position: toast.POSITION.BOTTOM_CENTER,
+            theme:'dark'
+
           });
         }
       } catch (e) {
         toast.error(`${e.message}`, {
           autoClose: 2000,
           position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
+
         });
       }
     },
@@ -83,13 +89,17 @@ console.log("error")
           context.dispatch('fetchUsers')
           toast.success(`${"You have been succesfully Registered"}`, {
             autoClose: 5000,
-            position: toast.POSITION.BOTTOM_CENTER
+            position: toast.POSITION.BOTTOM_CENTER,
+            theme:'dark'
+
           })
         }
       } catch (e) {
         toast.error(`${e.message}`, {
           autoClose: 2000,
-          position: toast.POSITION.BOTTOM_CENTER
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
+
         })
       }
     },
@@ -101,13 +111,17 @@ console.log("error")
           context.dispatch('fetchUsers')
           toast.success(`${"Your Profile has been successfully updated"}`, {
             autoClose: 2000,
-            position: toast.POSITION.BOTTOM_CENTER
+            position: toast.POSITION.BOTTOM_CENTER,
+            theme:'dark'
+
           })
         }
       } catch (e) {
         toast.error(`${e.message}`, {
           autoClose: 2000,
-          position: toast.POSITION.BOTTOM_CENTER
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
+
         })
       }
     },
@@ -118,13 +132,17 @@ console.log("error")
           context.dispatch('fetchUsers')
           toast.success(`${"Thank you for your service. You have been discharged."}`, {
             autoClose: 7000,
-            position: toast.POSITION.BOTTOM_CENTER
+            position: toast.POSITION.BOTTOM_CENTER,
+            theme:'dark'
+
           })
         }
       } catch (e) {
         toast.error(`${e.message}`, {
           autoClose: 2000,
-          position: toast.POSITION.BOTTOM_CENTER
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
+
         })
       }
     },
@@ -136,13 +154,17 @@ console.log("error")
           context.dispatch('fetchUsers')
           toast.success(`${msg}`, {
             autoClose: 2000,
-            position: toast.POSITION.BOTTOM_CENTER
+            position: toast.POSITION.BOTTOM_CENTER,
+            theme:'dark'
+
           })
         }
       } catch (e) {
         toast.error(`${e.message}`, {
           autoClose: 2000,
-          position: toast.POSITION.BOTTOM_CENTER
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
+
         })
       }
     },
@@ -158,7 +180,9 @@ console.log("error")
   } catch (e) {
     toast.error(`${e.message}`, {
       autoClose: 2000,
-      position: toast.POSITION.BOTTOM_CENTER
+      position: toast.POSITION.BOTTOM_CENTER,
+      theme:'dark'
+
     })
   }
 
@@ -173,12 +197,16 @@ async fetchOnePost(context, id) {
       toast.error(`${result}`, {
         autoClose: 2000,
         position: toast.POSITION.BOTTOM_CENTER,
+        theme:'dark'
+
       });
     }
   } catch (e) {
     toast.error(`${e.message}`, {
       autoClose: 2000,
       position: toast.POSITION.BOTTOM_CENTER,
+      theme:'dark'
+
     });
   }
 },
@@ -190,13 +218,17 @@ async PostMessage(context, payload) {
       context.dispatch('fetchPosts')
       toast.success(`${"Your post has been successfully posted."}`, {
         autoClose: 2000,
-        position: toast.POSITION.BOTTOM_CENTER
+        position: toast.POSITION.BOTTOM_CENTER,
+        theme:'dark'
+
       })
     }
   } catch (e) {
     toast.error(`${e.message}`, {
       autoClose: 2000,
-      position: toast.POSITION.BOTTOM_CENTER
+      position: toast.POSITION.BOTTOM_CENTER,
+      theme:'dark'
+
     })
   }
 },
@@ -208,13 +240,17 @@ async updateMessage(context, payload) {
       context.dispatch('fetchPosts')
       toast.success(`${message}`, {
         autoClose: 2000,
-        position: toast.POSITION.BOTTOM_CENTER
+        position: toast.POSITION.BOTTOM_CENTER,
+        theme:'dark'
+
       })
     }
   } catch (e) {
     toast.error(`${e.message}`, {
       autoClose: 2000,
-      position: toast.POSITION.BOTTOM_CENTER
+      position: toast.POSITION.BOTTOM_CENTER,
+      theme:'dark'
+
     })
   }
 },
@@ -225,13 +261,17 @@ async deleteMessage(context, id) {
       context.dispatch('fetchPosts')
       toast.success(`${"Your post has been removed"}`, {
         autoClose: 5000,
-        position: toast.POSITION.BOTTOM_CENTER
+        position: toast.POSITION.BOTTOM_CENTER,
+        theme:'dark'
+
       })
     }
   } catch (e) {
     toast.error(`${e.message}`, {
       autoClose: 2000,
-      position: toast.POSITION.BOTTOM_CENTER
+      position: toast.POSITION.BOTTOM_CENTER,
+      theme:'dark'
+
     })
   }
 },
@@ -247,7 +287,9 @@ console.log("error")
   } catch (e) {
     toast.error(`${e.message}`, {
       autoClose: 2000,
-      position: toast.POSITION.BOTTOM_CENTER
+      position: toast.POSITION.BOTTOM_CENTER,
+      theme:'dark'
+
     })
   }
 
@@ -262,12 +304,16 @@ async fetchOneReply(context, id) {
       toast.error(`${result}`, {
         autoClose: 2000,
         position: toast.POSITION.BOTTOM_CENTER,
+        theme:'dark'
+
       });
     }
   } catch (e) {
     toast.error(`${e.message}`, {
       autoClose: 2000,
       position: toast.POSITION.BOTTOM_CENTER,
+      theme:'dark'
+
     });
   }
 },
@@ -279,13 +325,17 @@ async PostReply(context, payload) {
       context.dispatch('fetchReplies')
       toast.success(`${"Your reply has been successfully posted."}`, {
         autoClose: 2000,
-        position: toast.POSITION.BOTTOM_CENTER
+        position: toast.POSITION.BOTTOM_CENTER,
+        theme:'dark'
+
       })
     }
   } catch (e) {
     toast.error(`${e.message}`, {
       autoClose: 2000,
-      position: toast.POSITION.BOTTOM_CENTER
+      position: toast.POSITION.BOTTOM_CENTER,
+      theme:'dark'
+
     })
   }
 },
@@ -297,13 +347,17 @@ async updateReply(context, payload,) {
       context.dispatch('fetchReplies')
       toast.success(`${message}`, {
         autoClose: 2000,
-        position: toast.POSITION.BOTTOM_CENTER
+        position: toast.POSITION.BOTTOM_CENTER,
+        theme:'dark'
+
       })
     }
   } catch (e) {
     toast.error(`${e.message}`, {
       autoClose: 2000,
-      position: toast.POSITION.BOTTOM_CENTER
+      position: toast.POSITION.BOTTOM_CENTER,
+      theme:'dark'
+
     })
   }
 },
@@ -314,13 +368,15 @@ async deleteReply(context, id) {
       context.dispatch('fetchReplies')
       toast.success(`${"Your reply has been removed"}`, {
         autoClose: 5000,
-        position: toast.POSITION.BOTTOM_CENTER
+        position: toast.POSITION.BOTTOM_CENTER,
+      theme:'dark'
       })
     }
   } catch (e) {
     toast.error(`${e.message}`, {
       autoClose: 2000,
-      position: toast.POSITION.BOTTOM_CENTER
+      position: toast.POSITION.BOTTOM_CENTER,
+      theme:'dark'
     })
   }
 },
