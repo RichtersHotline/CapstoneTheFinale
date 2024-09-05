@@ -1,6 +1,6 @@
 <template>
 <div class="container-fluid">
-    <div class="AboutContainer mt-5">
+    <div class="AboutContainer mt-5 g-0">
       <div class="AboutText">
         <h2 class="text-center text-decoration-none">Please contact Us</h2>
     <p>We’re always here to listen 24/7 if you have a question, a problem or you just want to provide feed back we’re always eager to take your call.</p>

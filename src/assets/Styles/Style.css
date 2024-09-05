@@ -11,6 +11,46 @@ margin:0;
 padding: 0;
 box-sizing:border-box;
 }
+/* Animations */
+
+@keyframes Gallery {
+
+
+
+    0% {
+        background-image:url("https://richtershotline.github.io/Pimages/Images/Collage1.jpg");
+
+        
+
+    }
+    25% {
+        background-image:url("https://richtershotline.github.io/Pimages/Images/Collage4.jpg");
+          
+  
+      }
+   50% {
+    background-image:url("https://richtershotline.github.io/Pimages/Images/Collage2.jpg");
+        
+
+
+   }
+   75% {
+
+    background-image:url("https://richtershotline.github.io/Pimages/Images/Collage3.jpg");
+
+
+   }
+   100% {
+
+    background-image:url("https://richtershotline.github.io/Pimages/Images/Collage1.jpg");
+
+
+   }
+
+
+}
+
+
 .container-fluid {
 
     /* padding:0 !important; */
@@ -106,8 +146,10 @@ color:white !important;
 }
 /* About Us Styling */
 .AboutContainer {
-
-    width:50%;
+  background-color:
+  #232326;
+padding:1rem;
+    width:100%;
     margin:auto;
 
 
@@ -334,6 +376,7 @@ opacity:0.4;
        /* Splash Page Styling */
        .SplashContainer {
         background-color: #1F1F23;
+        opacity:0.2;
         width:450px;
         height:auto;
         margin:auto;
@@ -342,6 +385,13 @@ opacity:0.4;
        margin-top:20px;
        border:1px solid black;
        /* box-shadow:7px 7px #000000; */
+       transition:2s;
+       &:hover {
+background-color:#0b0d12;
+
+        opacity:1
+
+       }
        }
        .SplashContainer h2 {
  
@@ -398,11 +448,12 @@ margin-left:10px;
        }
        .Background {
 
-        background-image:url("https://richtershotline.github.io/Pimages/Images/Collage.png");
+        background-image:url("https://richtershotline.github.io/Pimages/Images/Collage.jpg");
         background-position:center;
         background-repeat: no-repeat; 
         background-size: cover; 
        height:100vh;
+       animation:Gallery 20s 2s infinite;
        }
        /* Sign up Styling */
        #SignupImg {
