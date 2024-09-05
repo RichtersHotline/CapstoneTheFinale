@@ -836,6 +836,27 @@ display:flex;
 justify-content:center;
 flex-direction:column;
 }
+.EntireCon {
+
+    display:flex;
+
+}
+.LeftSideCon {
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:20%;
+    position:absolute;
+ background-color:#232326 !important;    
+ top:50%;
+    bottom:50%;
+    height:50vh;
+}
+.LeftSideCon p {
+
+
+}
 .HomeConPosts {
 
 

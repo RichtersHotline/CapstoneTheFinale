@@ -1,6 +1,13 @@
 <template>
   <div class="container-fluid">
 <h1 class="hidden">Hola</h1>
+<div class="EntireCon">
+  <div class="LeftSideCon">
+  <h5>You Might know...</h5>
+
+
+
+  </div>
   <div class="HomeCon">
   <h5 class="HomeThought">Speak freely, </h5>
   <textarea id="HomeMsg" v-model="payloadPosts.Msg" placeholder="Write your message..."></textarea>
@@ -14,6 +21,7 @@
   </div>
 
 
+</div>
 </div>
 <h2></h2>
 <div class="HomeConPosts">
