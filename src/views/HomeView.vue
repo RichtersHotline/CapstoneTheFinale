@@ -1,12 +1,14 @@
 <template>
   <div class="container-fluid">
 <h1 class="hidden">Hola</h1>
-<div class="EntireCon">
-  <div class="LeftSideCon">
+<div class="EntireCon" >
+  <div class="LeftSideCon" v-if="Users">
   <h5>You Might know...</h5>
-
-
-
+  <div class="Suggestions" v-for="user in Users.splice(1, 3)" :key="user.userID">
+    <h4>{{user.firstName}}</h4>
+  <h2>{{user.lastName}}</h2>
+  <h2>{{user.emailAddress}}</h2>
+  </div>
   </div>
   <div class="HomeCon">
   <h5 class="HomeThought">Speak freely, </h5>
@@ -26,11 +28,12 @@
 <h2></h2>
 <div class="HomeConPosts">
 <h2 class="text-center mb-5">Your Feed</h2>
-<div v-if="fetchPosts">
-  <div class="MessageContainer" v-for="post in Post" :key="post.postID">
+<div v-if="limited">
+  <div class="MessageContainer" v-for="post in Post.slice(9, 13)" :key="post.postID">
     <h5 class="NameBG">John Doe posted on {{post.DatePosted}}</h5>
     <div class="Messages">
     <h5 class="UserMessage">{{ post.Msg }}</h5>
+    <h5>{{ post.postID }}</h5>
     <div class="PostImgContainer">
     <img :src="post.PostImg" class="PostImg" loading="lazy">
   </div>
@@ -269,7 +272,7 @@ export default {
       },
       payloadPosts: {
         Msg: "",
-        PostImg:""
+        PostImg:"",
       },
 
       payloadModal: {
@@ -397,11 +400,13 @@ console.log(this.payloadPosts.Msg)
       
       console.log( "Id" + this.payload.commentID, "Data" + this.payloadReply.Reply)    
 
-    }
-     
+    },
+    fetchUsers() {
+    this.$store.dispatch("fetchUsers")
+
   },
 
-
+  },
   computed: {
     User() {
       return this.$store.state.user;
@@ -416,7 +421,16 @@ console.log(this.payloadPosts.Msg)
 
       return this.$store.state.Replies
 
-    }
+    },
+    Users() {
+
+return this.$store.state.users
+},
+limited() {
+
+  return Array.isArray(this.Post) ? this.Post.slice(0, 10) : [];
+
+}
 
   },
   mounted() {
@@ -426,6 +440,8 @@ console.log(this.payloadPosts.Msg)
     console.log(this.post)
     this.fetchReplies();
     console.log(this.Replies)
+    this.fetchUsers();
+    console.log(this.users)
   }
 }
 

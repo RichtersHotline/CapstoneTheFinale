@@ -877,6 +877,12 @@ flex-direction:column;
 
 
     }
+   
+}
+.Suggestions {
+
+    background-color:orange !important;
+    width:83%;
 }
 /* Media Queries */
 @media only screen and (max-width: 720px) {
