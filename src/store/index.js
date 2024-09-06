@@ -8,7 +8,7 @@ export default createStore({
   state: {
     users:[],
     user: null,
-    posts: null,
+    posts: [],
     post:null,
     Reply:null,
     Replies:null,
