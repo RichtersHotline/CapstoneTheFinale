@@ -182,9 +182,9 @@
           <div class="row text-center">
             <div class="col">
               <h4>Enter Post ID</h4>
-              <input type="number" id="InputDel" v-model="payload.postID">
+              <input type="number" id="InputDel" v-model="this.payloadModal.postID">
               <h4>Enter New Message</h4>
-              <input type="text" id="InputDel" v-model="payloadModal.Msg">
+              <input type="text" id="InputDel" v-model="this.payloadModal.Msg">
               <button type="button" id="Deleter" @click.prevent="postUpdate">Edit Post</button>
             </div>
 
@@ -265,12 +265,12 @@
           <div class="row text-center">
             <div class="col">
               <h4>Enter Reply ID</h4>
-              <input type="text" id="InputDel" v-model="this.payload.commentID">
+              <input type="text" id="InputDel" v-model="this.payloadReply.commentID">
               <h4>Enter Your new Reply</h4>
-              <input type="text" id="InputDel" v-model="payloadReply.Reply">
+              <input type="text" id="InputDel" v-model="this.payloadReply.Reply">
 
 
-              <button type="button" id="Deleter" @click.prevent="replyUpdation">Reply</button>
+              <button type="button" id="Deleter" @click.prevent="replyUpdation">Edit Reply</button>
             </div>
 
           </div>
@@ -286,6 +286,7 @@
       <h5 class="NameBG">John Doe posted on {{post.DatePosted}}</h5>
       <div class="Messages">
       <h5 class="UserMessage">{{ post.Msg }}</h5>
+      <h5>{{post.postID}}</h5>
       <div class="PostImgContainer">
       <img :src="post.PostImg" class="PostImg" loading="lazy">
     </div>
@@ -317,6 +318,7 @@
     <h5 class="NameBG">John Doe replied on {{reply.DatePosted }}</h5>
     <div class="Messages">
   <h5 class="UserMessage">{{ reply.Reply}}</h5>
+  <h5>{{reply.commentID}}</h5>
   <div class="PostImgContainer">
     <img :src="reply.ReplyImg" class="PostImg" loading="lazy">
   </div>
@@ -365,7 +367,8 @@ export default {
       },
       payloadPosts: {
         Msg: "",
-        PostImg:""
+        PostImg:"",
+        updateMsg:"",
       },
 
       payloadModal: {
@@ -438,7 +441,7 @@ LoadingSpinner
     },
     postUpdate() {
     
-      this.$store.dispatch("updateMessage", { id: this.payload.postID, data: this.payloadModal.Msg })
+      this.$store.dispatch("updateMessage", { id: this.payloadModal.postID, data: this.payloadModal })
 console.log(this.payloadPosts.Msg)
     },
     fetchPosts() {
@@ -489,7 +492,7 @@ console.log(this.payloadPosts.Msg)
 
     },
     replyUpdation() {
-      this.$store.dispatch('updateReply', { id: this.payload.commentID, data: this.payloadReply.Reply });
+      this.$store.dispatch('updateReply', { id: this.payloadReply.commentID, data: this.payloadReply});
       
       console.log( "Id" + this.payload.commentID, "Data" + this.payloadReply.Reply)    
 
