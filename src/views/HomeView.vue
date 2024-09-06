@@ -5,9 +5,11 @@
   <div class="LeftSideCon" v-if="Users">
   <h5>You Might know...</h5>
   <div class="Suggestions" v-for="user in Users.splice(1, 3)" :key="user.userID">
-    <h4>{{user.firstName}}</h4>
-  <h2>{{user.lastName}}</h2>
-  <h2>{{user.emailAddress}}</h2>
+    <h4>{{user.firstName}} {{user.lastName}}</h4>
+    <p>{{user.UnitorRank}}</p>
+    <router-link :to="{name: 'profile', params: { id: user.userID } }">
+      <button type="button" class="VipBtnProfile">View Profile</button>
+    </router-link>"
   </div>
   </div>
   <div class="HomeCon">
@@ -25,13 +27,13 @@
 
 </div>
 </div>
-<h2></h2>
 <div class="HomeConPosts">
 <h2 class="text-center mb-5">Your Feed</h2>
 <div v-if="limited">
   <div class="MessageContainer" v-for="post in Post.slice(9, 13)" :key="post.postID">
-    <h5 class="NameBG">John Doe posted on {{post.DatePosted}}</h5>
     <div class="Messages">
+      <h5 class="NameBG">John Doe posted on {{post.DatePosted}}</h5>
+
     <h5 class="UserMessage">{{ post.Msg }}</h5>
     <h5>{{ post.postID }}</h5>
     <div class="PostImgContainer">
@@ -57,9 +59,10 @@
 </div>
 
 </div>
-<div class="ReplyContainer" v-for="reply in Replies" :key="reply.commentID">
-  <h5 class="NameBG">John Doe replied on {{reply.DatePosted }}</h5>
+<div class="ReplyContainer mt-4" v-for="reply in Replies.slice(8, 12)" :key="reply.commentID">
   <div class="Messages">
+    <h5 class="NameBG">John Doe replied on {{reply.DatePosted }}</h5>
+
 <h5 class="UserMessage">{{ reply.Reply}}</h5>
 <div class="PostImgContainer">
   <img :src="reply.ReplyImg" class="PostImg" loading="lazy">

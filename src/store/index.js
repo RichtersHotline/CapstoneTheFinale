@@ -10,8 +10,8 @@ export default createStore({
     user: null,
     posts: [],
     post:null,
-    Reply:null,
-    Replies:null,
+    Reply:[],
+    Replies:[],
   },
   getters: {
   },
