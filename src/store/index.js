@@ -103,6 +103,28 @@ console.log("error")
         })
       }
     },
+    async addAdmin(context, payload) {
+      try {
+        const msg= await (await axios.post(`${apiURL}users/registerAdmin`, payload)).data
+        console.log(msg);
+        if (msg) {
+          context.dispatch('fetchUsers')
+          toast.success(`${"You have been succesfully Registered"}`, {
+            autoClose: 5000,
+            position: toast.POSITION.BOTTOM_CENTER,
+            theme:'dark'
+
+          })
+        }
+      } catch (e) {
+        toast.error(`${e.message}`, {
+          autoClose: 2000,
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
+
+        })
+      }
+    },
     async updateUser(context, payload) {
       try {
         console.log(payload)
@@ -150,6 +172,28 @@ console.log("error")
       try {
         console.log(payload)
         const  msg  = await (await axios.post(`${apiURL}users/login/${payload.emailAddress}`, payload.data)).data
+        if (msg) {
+          context.dispatch('fetchUsers')
+          toast.success(`${msg}`, {
+            autoClose: 2000,
+            position: toast.POSITION.BOTTOM_CENTER,
+            theme:'dark'
+
+          })
+        }
+      } catch (e) {
+        toast.error(`${e.message}`, {
+          autoClose: 2000,
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
+
+        })
+      }
+    },
+    async AdminLogin(context, payload) {
+      try {
+        console.log(payload)
+        const  msg  = await (await axios.post(`${apiURL}users/login/admin/${payload.emailAddress}`, payload.data)).data
         if (msg) {
           context.dispatch('fetchUsers')
           toast.success(`${msg}`, {
