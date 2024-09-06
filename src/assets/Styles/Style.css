@@ -901,8 +901,40 @@ flex-direction:column;
       }
   
   }
+/* Admin Styling */
+
+td {
+
+color:white;
+border:1px solid black !important;
+padding:10px;
+}
+th {
+
+    color:white;
+   border:1px solid black !important;
+   width:20% !important;
+}
+tr {
+
+    color:white;
+
+}
+
+table th {
+
+    width:auto !important;
+}
+thead {
 
 
+}
+
+.UserTableImg {
+
+width:40% !important;
+
+}
 
 /* Media Queries */
 @media only screen and (max-width: 720px) {
