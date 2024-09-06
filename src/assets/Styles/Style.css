@@ -81,7 +81,6 @@ box-sizing:border-box;
 .modal-title {
 
     color: white !important;
-    background-color:orange 
 
 
 }
@@ -738,7 +737,7 @@ color:black !important;
 
 .Messages {
     background-color:#151519;
-
+   margin-top:10px;
 
 }
 .MessageContainer { 
@@ -757,7 +756,7 @@ color:black !important;
 
     background-color:#1F1F23;
     padding:10px;
-
+margin:0;
 }
 .deletePortion {
    
@@ -851,7 +850,9 @@ flex-direction:column;
  background-color:#232326 !important;    
  top:50%;
     bottom:50%;
-    height:50vh;
+    height:54vh;
+    border:1px solid black;
+    
 }
 .LeftSideCon p {
 
@@ -881,9 +882,28 @@ flex-direction:column;
 }
 .Suggestions {
 
-    background-color:orange !important;
-    width:83%;
+    width:80%;
 }
+.VipBtnProfile {
+    width:50%;
+    border-radius:4px;
+   margin:auto;
+   background-color:		#1c222e;
+   border:1px solid black;
+   color:white;
+   text-align:center;
+   
+   &:hover {
+
+       background-color:#131720;
+
+
+      }
+  
+  }
+
+
+
 /* Media Queries */
 @media only screen and (max-width: 720px) {
     /* About Queries */
