@@ -10,7 +10,7 @@ class Users{
 fetchSingleUser(req, res) {
 try {
     const Query = `
-    select userID, firstName, lastName, mobileNumber, emailAddress, UnitorRank, combatStatus,  userPwd, UserImg, FriendCount
+    select userID, firstName, lastName, mobileNumber, emailAddress, UnitorRank, combatStatus,  userPwd, UserImg, FriendCount, userRole
     from Users
     where userID = ${req.params.id}
 
@@ -34,7 +34,7 @@ try {
 fetchAllUsers(req, res) {
     try {
         const Query = `
-        select userID, firstName, lastName, mobileNumber, emailAddress, UnitorRank, combatStatus,  userPwd, UserImg, FriendCount
+        select userID, firstName, lastName, mobileNumber, emailAddress, UnitorRank, combatStatus,  userPwd, UserImg, FriendCount, userRole
         from Users
         `;
         db.query(Query, (err, results) => {
