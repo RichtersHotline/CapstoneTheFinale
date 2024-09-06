@@ -43,7 +43,8 @@ const routes = [
         {
         path: '/admin',
         name: 'Admin',
-        component:AdminView
+        component:AdminView,
+        meta: {hideNavbarComp: true}
         }
 ]
 
