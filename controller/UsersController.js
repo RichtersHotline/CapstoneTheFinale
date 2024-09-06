@@ -30,6 +30,14 @@ PostersRouter.get("/",  (req, res) => {
 
 
     })
+    PostersRouter.post("/registerAdmin", (req, res) => {
+
+        Posters.registerAdmin(req, res)
+
+
+
+
+    })
      // Updates
      PostersRouter.patch("/:id", (req, res) => {
     
@@ -44,6 +52,12 @@ PostersRouter.get("/",  (req, res) => {
         
         
         })
+        PostersRouter.post("/login/admin",  (req, res) => {
+
+            Posters.AdminLogin(req, res)
+            
+            
+            })
         // Delete
         PostersRouter.delete("/:id",  (req, res) => {
 

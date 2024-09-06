@@ -3,6 +3,9 @@ import {
     createToken
 } from "../middleware/AuthenticateUser.js"
 import {
+  createAdminToken
+} from "../middleware/AuthenticateAdmin.js"
+import {
     hash, compare
 } from "bcrypt"
 class Users{
@@ -107,6 +110,64 @@ fetchAllUsers(req, res) {
 
 
     }
+
+
+
+}
+async registerAdmin(req, res)  {
+  try {
+      let data = req.body
+      // encrypts the users password to 12 random characters also known as salt (???)
+      data.adminKey = await hash(data.adminKey, 12)
+      //   Payload
+      let admin = {
+
+          emailAddress: data.emailAddress,
+          adminKey: data.adminKey
+
+      }
+      const Query = `
+insert into Users
+SET ?;
+
+`
+      db.query(Query, [data], (err) => {
+
+          if (err) {
+              res.json({
+                  status: res.statusCode,
+                  eror: err.message
+
+
+              })
+
+
+
+          } else {
+
+              const token = createAdminToken(admin)
+              res.json({
+                  token,
+                  eror: "Thank you for registering"
+
+
+              })
+
+
+          }
+      })
+
+  } catch (e) {
+      // when a new user can't be added
+      res.json({
+          status: 404,
+          err: e.message
+
+      })
+
+
+
+  }
 
 
 
@@ -248,7 +309,91 @@ async Login(req, res) {
 
 
 
-}  
+}
+async AdminLogin(req, res) {
+  try {
+
+      const {
+          emailAddress,
+          adminKey
+      } = req.body
+      const Query = `
+  
+  select userID, firstName, lastName, mobileNumber, emailAddress, UnitorRank, combatStatus, UserImg, FriendCount, adminKey
+      from Users
+  where emailAddress = '${emailAddress}';
+  
+  
+  `
+      db.query(Query, async (err, result) => {
+          if (err) throw new Error("Invalid Login. Pleases check your details")
+          if (!result?.length) {
+              res.json({
+
+                  status: 401,
+                  msg: "You are not an Adminr"
+
+
+              })
+
+
+          } else {
+
+              const isValidPass = await compare(adminKey, result[0].adminKey)
+              if (isValidPass) {
+
+                  const token = createAdminToken({
+                      emailAddress,
+                      adminKey
+
+
+                  })
+                  res.json({
+                      status: res.statusCode,
+                      token,
+                      result: result[0]
+
+
+
+
+                  })
+
+              } else {
+
+                  res.json({
+
+                      status: 401,
+                      msg: "You might not be registered"
+
+
+                  })
+
+
+              }
+
+
+          }
+      })
+
+
+  } catch (e) {
+
+      res.json({
+          status: 404,
+          msg: e.message
+
+
+
+      })
+
+  }
+
+
+
+
+
+
+}    
 
 
 
