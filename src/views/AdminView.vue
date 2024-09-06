@@ -27,6 +27,8 @@
             <td>{{ user.combatStatus }}</td>
             <td>{{ user.userPwd }}</td>
             <td>{{ user.UserImg }}</td>
+            <td>{{ user.userRole }}</td>
+
             <td><button
           class="btn btn-success" data-bs-toggle="modal" data-bs-target="#UserModel">
             Edit User
@@ -137,8 +139,10 @@
               <input type="text" id="userName" v-model="payload.combatStatus">
               <h4>Enter new password</h4>
               <input type="password" id="userName" v-model="payload.userPwd">
-              <h4>Choose your new profile picture</h4>
+              <h4>Choose new profile picture</h4>
               <input type="text" id="userName" v-model="payload.UserImg">
+              <h4>Choose new Role</h4>
+              <input type="text" id="userName" v-model="payload.userRole">
               <button type="submit" class="mb-4" @click.prevent="profileUpdate" id="ProductBtn2">Update
                 Profile</button>
             </div>
@@ -225,6 +229,7 @@ export default {
         combatStatus: "",
         userPwd: "",
         UserImg: "",
+        userRole:"",
       },
       payloadPosts: {
         Msg: "",

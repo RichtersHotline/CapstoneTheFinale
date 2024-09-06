@@ -85,6 +85,7 @@ toast.success(`${"Welcome Owner."}`, {
         if (response.data.token) {
           localStorage.setItem('token', response.data.token);
           this.$router.push('/');
+          console.log(this.userRole)
         }
         else if(!response.data.token) {
             toast.error(`${"Email Address or Password is not correct. Please check your details."}`, {
