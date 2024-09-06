@@ -345,7 +345,7 @@ async updateReply(context, payload,) {
     const  message  = await (await axios.patch(`${apiURL}comment/${payload.id}`, payload.data)).data
     if (message) {
       context.dispatch('fetchReplies')
-      toast.success(`${message}`, {
+      toast.success(`${"Your Reply has been updated"}`, {
         autoClose: 2000,
         position: toast.POSITION.BOTTOM_CENTER,
         theme:'dark'
