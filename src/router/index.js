@@ -5,6 +5,7 @@ import ContactUsView from '../views/ContactUsView.vue'
 import SplashPageView from '../views/SplashPageView.vue'
 import SignUpView from '../views/SignUpView.vue'
 import ProfileView from '../views/ProfileView.vue'
+import AdminView from '../views/AdminView.vue'
 
 const routes = [
   {
@@ -38,6 +39,11 @@ const routes = [
         path: '/profile/:id',
           name: 'profile',
           component:ProfileView,
+        },
+        {
+        path: '/admin',
+        name: 'Admin',
+        component:AdminView
         }
 ]
 
