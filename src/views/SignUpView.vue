@@ -40,7 +40,7 @@
         </div>
         <h2 class="text-center">Status:</h2> 
   <div class="ContactUsText">
-<select name="Status" id="ContactForm" v-model="payload.combatStatus">
+<select name="Status" id="ContactForm" v-model="payload.combatStatus" UserEntry>
 <option value="Active">Active</option>
 <option value="Veteran">Veteran</option>
 
@@ -52,7 +52,7 @@
                   <div class="row pt-4">
                     <div class="col">
                 <h2 class="text-center">Password:</h2> 
-                <input type="password" name="Email" placeholder="Password..." id="SignUpPassword" v-model="payload.userPwd" required UserEntry>
+                <input type="password" name="pwd" placeholder="Password..." id="SignUpPassword" v-model="payload.userPwd" required UserEntry>
 
             </div>
                 
@@ -72,7 +72,14 @@
 
 </div>
   </div>
+<div class="UserContent" id="UserCon" v-for="user in users" :key="user.userID">
+<div v-if="users">
+{{user.emailAddress}}
 
+</div>
+
+
+</div>
 </div>
 
 </template>
@@ -96,6 +103,7 @@ userPwd:"",
 
 
 
+
 }
 
 
@@ -113,33 +121,51 @@ users() {
 methods: {
 Registration() {
   let Email = document.getElementsByName("Email")[0]
-
-  let UserEntry = document.getElementById("ContactForm")
+  const userEmail = document.getElementsByName("Email")[0]
+  let FName = document.getElementsByName("FirstName")[0]
+  let LName = document.getElementsByName("LastName")[0]
+  let Phone = document.getElementsByName("Phone")[0]
+  let Rank = document.getElementsByName("Rank")[0]
+  let pwd = document.getElementsByName("pwd")[0]
+  let Status = document.getElementsByName("Status")[0]
+  
   try {
-    if (!Email.value.includes('@')) {
-    toast.error(`${"You have entered an invalid email address."}`, {
-          autoClose: 5000,
-          position: toast.POSITION.BOTTOM_CENTER,
-          theme:'dark'
-
-        })
-        switch(UserEntry.value) {
-
-case "":
-toast.error(`${"You have not entered any values."}`, {
+    if (!FName.value || !LName.value || !Phone.value || !Rank.value || !pwd.value || !Status.value) {
+    toast.error("Please fill out all fields.", {
         autoClose: 5000,
         position: toast.POSITION.BOTTOM_CENTER,
-        theme:'dark'
-
-      })
-break;
-case 70: 
-alert("Please enter values that are less than 70 characters")
-break;
-}
-      }
+        theme: 'dark'
+    });
+    return;
       
-      else {
+    }
+    
+
+    if (!Email.value.includes('@')) {
+        toast.error("You have entered an invalid email address.", {
+            autoClose: 5000,
+            position: toast.POSITION.BOTTOM_CENTER,
+            theme: 'dark'
+        });
+        return;
+        
+    } 
+    const isDuplicateEmail = (userEmail, users) => {
+        return users.some(user => user.email === userEmail);
+    };
+
+    if (isDuplicateEmail(userEmail, this.users)) {
+        toast.error("You have entered a duplicate Email.", {
+            autoClose: 5000,
+            position: toast.POSITION.BOTTOM_CENTER,
+            theme: 'dark'
+        });
+        return;
+}
+
+
+     
+    else {
         console.log(this.payload);
     this.$store.dispatch("addAUser", this.payload);
     setTimeout(() => {
@@ -151,6 +177,12 @@ window.location.href="/";
 }, "5000")
         
       }
+
+    
+    
+    
+  
+  
 
   
    
@@ -171,6 +203,12 @@ window.location.href="/";
 },
 
 
+
+
+},
+mounted() {
+this.$store.dispatch("fetchUsers")
+console.log(this.Users)
 
 
 }

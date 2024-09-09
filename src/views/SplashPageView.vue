@@ -11,7 +11,7 @@
      <input type="email" name="Email" v-model="emailAddress" placeholder="Email..." id="LoginForm" required UserEntry>
      <h2 class="" id="logPwd">Password:</h2>
 
-<input type="password" name="Email" class="Pwd" v-model="userPwd" placeholder="Password..." id="LoginPForm"  UserEntry>
+<input type="password" name="password" class="Pwd" v-model="userPwd" placeholder="Password..." id="LoginPForm"  UserEntry>
 <h2 name="Admin" id="Admin" class="Admin">Admin Key:</h2>
 
      <input type="email" name="Admin" class="Admin" v-model="adminKey" placeholder="Admin key..." id="LoginAdminForm" UserEntry>
@@ -53,8 +53,8 @@ export default {
       console.log("Email Address:", this.emailAddress);
       console.log("Entered Password", this.userPwd);
 
-      let UserEntry = document.getElementById("LoginForm")
       let Email = document.getElementsByName("Email")[0]
+      let Password = document.getElementsByName("password")[0]
       if (!Email.value.includes('@')) {
     toast.error(`${"You have entered an invalid email address."}`, {
           autoClose: 5000,
@@ -62,8 +62,10 @@ export default {
           theme:'dark'
 
         })
+        return;
  } 
- switch(UserEntry.value) {
+ 
+ switch(Password.value, Email.value) {
 
 case "":
 toast.error(`${"You have not filled out a field value."}`, {
@@ -72,10 +74,10 @@ toast.error(`${"You have not filled out a field value."}`, {
         theme:'dark'
 
       })
-break;
-case 70: 
+      return;
+      case 70: 
 alert("Please enter values that are less than 70 characters")
-break;
+return;
 case "Richter" :
 toast.success(`${"Welcome Owner."}`, {
         autoClose: 5000,
@@ -103,6 +105,7 @@ toast.success(`${"Welcome Owner."}`, {
           theme:'dark'
           
         })
+        return;
         }
       } catch (err) {
         toast.error(`${"Something went wrong with Login. Please try again later"}`, {
@@ -136,10 +139,10 @@ toast.error(`${"You have not filled out a field value."}`, {
         theme:'dark'
 
       })
-break;
-case 70: 
+      return;
+      case 70: 
 alert("Please enter values that are less than 70 characters")
-break;
+return;
 case "Richter" :
 toast.success(`${"Welcome Owner."}`, {
         autoClose: 5000,
@@ -167,6 +170,8 @@ toast.success(`${"Welcome Owner."}`, {
           theme:'dark'
           
         })
+        return;
+
         }
       } catch (err) {
         toast.error(`${"Something went wrong with Login. Please try again later"}`, {
