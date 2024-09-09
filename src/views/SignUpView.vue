@@ -36,7 +36,7 @@
       <div class="col">
         <h2 class="text-center">Email Address:</h2> 
         <div class="ContactUsText">
-            <input type="email" name="Email" placeholder="Email..." id="ContactForm" v-model="payload.emailAddress" required UserEntry>
+            <input type="Email" name="Email" placeholder="Email..." id="ContactForm" v-model="payload.emailAddress" required UserEntry>
         </div>
         <h2 class="text-center">Status:</h2> 
   <div class="ContactUsText">
@@ -112,8 +112,35 @@ users() {
 },
 methods: {
 Registration() {
+  let Email = document.getElementsByName("Email")[0]
+
+  let UserEntry = document.getElementById("ContactForm")
   try {
-    console.log(this.payload);
+    if (!Email.value.includes('@')) {
+    toast.error(`${"You have entered an invalid email address."}`, {
+          autoClose: 5000,
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
+
+        })
+        switch(UserEntry.value) {
+
+case "":
+toast.error(`${"You have not entered any values."}`, {
+        autoClose: 5000,
+        position: toast.POSITION.BOTTOM_CENTER,
+        theme:'dark'
+
+      })
+break;
+case 70: 
+alert("Please enter values that are less than 70 characters")
+break;
+}
+      }
+      
+      else {
+        console.log(this.payload);
     this.$store.dispatch("addAUser", this.payload);
     setTimeout(() => {
 
@@ -122,8 +149,13 @@ window.location.href="/";
 
 
 }, "5000")
+        
+      }
 
-  } catch (error) {
+  
+   
+
+} catch (error) {
 
     toast.error(`${"Registration could not be completed. Please try again later."}`, {
           autoClose: 5000,
@@ -136,7 +168,7 @@ window.location.href="/";
 
 
 
-}
+},
 
 
 
