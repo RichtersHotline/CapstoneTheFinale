@@ -9,7 +9,12 @@ import AdminView from '../views/AdminView.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
+    name: 'home',
+    component: HomeView
+  },
+  {
+    path: '/home',
     name: 'home',
     component: HomeView
   },
@@ -24,7 +29,7 @@ const routes = [
     component:ContactUsView
   },
   {
-    path: '/splash',
+    path: '/',
       name: 'splash',
       component:SplashPageView,
       meta: {hideNavbarComp: true}
