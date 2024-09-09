@@ -138,33 +138,43 @@ toast.success(`${"Your form has been reset."}`, {
   },
   Validation() {
     let Email = document.getElementsByName("Email")[0]
+  let FName = document.getElementsByName("FirstName")[0]
+  let LName = document.getElementsByName("LastName")[0]
+  let Phone = document.getElementsByName("Phone")[0]
+  let UserMessage = document.getElementsByName("UserMessage")[0]
+  
+  try {
+    if (!FName.value || !LName.value || !Phone.value || !UserMessage.value) {
+    toast.error("Please fill out all fields.", {
+        autoClose: 5000,
+        position: toast.POSITION.BOTTOM_CENTER,
+        theme: 'dark'
+    });
+    return;
+      
+    }
+    
 
-  let UserEntry = document.getElementById("ContactForm")
-  if (!Email.value.includes('@')) {
-    toast.error(`${"You have entered an invalid email address."}`, {
+    if (!Email.value.includes('@')) {
+        toast.error("You have entered an invalid email address.", {
+            autoClose: 5000,
+            position: toast.POSITION.BOTTOM_CENTER,
+            theme: 'dark'
+        });
+        return;
+        
+    } 
+ 
+
+
+
+  } catch (e) {
+    toast.error(`${"Could not contact at this point. Please try again later"}`, {
           autoClose: 5000,
           position: toast.POSITION.BOTTOM_CENTER,
           theme:'dark'
 
         })
- } 
-
-switch(UserEntry.value) {
-
-  case "":
-  toast.error(`${"You have not entered any values."}`, {
-          autoClose: 5000,
-          position: toast.POSITION.BOTTOM_CENTER,
-          theme:'dark'
-
-        })
-break;
-case 70: 
-alert("Please enter values that are less than 70 characters")
-break;
-case "Richter" :
-  alert("Welcome. Owner")
-}
 
   }
 
@@ -176,5 +186,5 @@ console.log(this.Users)
 
 }
 }
-
+}
 </script>
