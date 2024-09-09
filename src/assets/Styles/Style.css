@@ -471,6 +471,48 @@ background-color:#0b0d12;
 
        }
        }
+       #VipBtnULogin {
+
+
+        background-color:		#1c222e;
+        width:75%;
+        height:25%;
+        border:1px solid black;
+        border-radius:7px;
+       margin:auto;
+       padding:2px;
+       color:white;
+       margin-top:20px;
+       text-align:center;
+       outline:1px solid black;
+       &:hover {
+
+        background-color:#131720;
+
+
+       }
+       }
+       #VipBtnAdminLogin {
+
+
+        background-color:		#1c222e;
+        width:75%;
+        height:25%;
+        border:1px solid black;
+        border-radius:7px;
+       margin:auto;
+       padding:2px;
+       color:white;
+       margin-top:20px;
+       text-align:center;
+       outline:1px solid black;
+       &:hover {
+
+        background-color:#131720;
+
+
+       }
+       }
        .Welcome {
         text-shadow:1px 1px black;
         font-family: "Darker Grotesque", sans-serif;
@@ -484,6 +526,18 @@ margin-left:10px;
 
        }
        #LoginForm {
+        width:50%;
+        outline:1px solid black;
+        border-radius:5px;
+        border:none;
+       }
+       #LoginPForm {
+        width:50%;
+        outline:1px solid black;
+        border-radius:5px;
+        border:none;
+       }
+       #LoginAdminForm {
         width:50%;
         outline:1px solid black;
         border-radius:5px;
