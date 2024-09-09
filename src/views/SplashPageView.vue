@@ -11,10 +11,10 @@
      <input type="email" name="Email" v-model="emailAddress" placeholder="Email..." id="LoginForm" required UserEntry>
      <h2 class="">Password:</h2>
 
-<input type="password" name="Email" v-model="userPwd" placeholder="Password..." id="LoginForm"  UserEntry>
-<h2>Admin Key:</h2>
+<input type="password" name="Email" class="" v-model="userPwd" placeholder="Password..." id="LoginForm"  UserEntry>
+<h2 name="Admin" class="">Admin Key:</h2>
 
-     <input type="email" name="Email" v-model="adminKey" placeholder="Admin key..." id="LoginForm" UserEntry>
+     <input type="email" name="" v-model="adminKey" placeholder="Admin key..." id="LoginForm" UserEntry>
 <div class="btnContainer mx-auto">
     <div class="router-link">
         <button id="VipBtnLogin" type="button" class="mb-4 me-3 mx-auto" @click.prevent="login">Login As User</button>
@@ -90,7 +90,7 @@ toast.success(`${"Welcome Owner."}`, {
         console.log('Response:', response);
         if (response.data.token) {
           localStorage.setItem('token', response.data.token);
-          this.$router.push('/');
+          this.$router.push('/home');
           console.log(this.userRole)
         }
         else if(!response.data.token) {
@@ -175,7 +175,12 @@ toast.success(`${"Welcome Owner."}`, {
       }
     },
   
-  }
+  },
+//   mounted() {
+// adminPart = document.getElementsByName("Admin").style.display = "none";
+
+//   }
+
 };
 </script>
 <style scoped>
