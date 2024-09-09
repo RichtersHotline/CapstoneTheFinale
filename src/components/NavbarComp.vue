@@ -6,7 +6,6 @@
         <router-link to="/contact">Contact</router-link>
         <router-link to="/signup">signup</router-link>
         <router-link to="/profile">profile</router-link>
-        <router-link to="/admin">admin</router-link>
 
         <input type="text" placeholder="Search for comrades..." class="form-control SearchBar" id="Searcher">
         <div class="spreader d-flex justify-content-around mt-2">

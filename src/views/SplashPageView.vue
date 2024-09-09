@@ -9,18 +9,21 @@
 <h2>Email Address:</h2>
 
      <input type="email" name="Email" v-model="emailAddress" placeholder="Email..." id="LoginForm" required UserEntry>
-     <h2 class="">Password:</h2>
+     <h2 class="" id="logPwd">Password:</h2>
 
-<input type="password" name="Email" class="" v-model="userPwd" placeholder="Password..." id="LoginForm"  UserEntry>
-<h2 name="Admin" class="">Admin Key:</h2>
+<input type="password" name="Email" class="Pwd" v-model="userPwd" placeholder="Password..." id="LoginPForm"  UserEntry>
+<h2 name="Admin" id="Admin" class="Admin">Admin Key:</h2>
 
-     <input type="email" name="" v-model="adminKey" placeholder="Admin key..." id="LoginForm" UserEntry>
+     <input type="email" name="Admin" class="Admin" v-model="adminKey" placeholder="Admin key..." id="LoginAdminForm" UserEntry>
 <div class="btnContainer mx-auto">
     <div class="router-link">
-        <button id="VipBtnLogin" type="button" class="mb-4 me-3 mx-auto" @click.prevent="login">Login As User</button>
-        <button id="VipBtnLogin" type="button" class="mb-4 mx-auto" @click.prevent="Adminlogin">Login As Admin</button>
+        <button id="VipBtnULogin" type="button" class="mb-4 mx-auto" @click.prevent="login">Login As User</button>
+        <button id="VipBtnAdminLogin" type="button" class="mb-4 mx-auto Admin" @click.prevent="Adminlogin">Login As Admin</button>
 
     </div>
+    <h5 class="text-center"> Are you an admin?</h5>
+    <input type="checkbox" id="AdminCheck" name="AdminCheck" @click="adminCheck">
+
     <p class="text-center mb-3">Don't have an account? Sign up now.</p>
 
     <router-link to="/signup" class="router-link">
@@ -174,7 +177,30 @@ toast.success(`${"Welcome Owner."}`, {
         })
       }
     },
-  
+   adminCheck() {
+  if(document.getElementById("AdminCheck").checked) {
+
+    document.getElementById("Admin").style.display = "block";
+    document.getElementById("LoginAdminForm").style.display = "block";
+    document.getElementById("VipBtnAdminLogin").style.display = "block";
+    document.getElementById("LoginPForm").style.display = "none";
+    document.getElementById("logPwd").style.display = "none";
+    document.getElementById("VipBtnULogin").style.display = "none";
+
+
+    
+  }
+  else if (!document.getElementById("AdminCheck").checked) {
+    document.getElementById("Admin").style.display = "none";
+    document.getElementById("LoginAdminForm").style.display = "none";
+    document.getElementById("VipBtnAdminLogin").style.display = "none";
+    document.getElementById("LoginPForm").style.display = "block";
+    document.getElementById("logPwd").style.display = "block";
+    document.getElementById("VipBtnULogin").style.display = "block";
+
+  }
+
+   }
   },
 //   mounted() {
 // adminPart = document.getElementsByName("Admin").style.display = "none";
