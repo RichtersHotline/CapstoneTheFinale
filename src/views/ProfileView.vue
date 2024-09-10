@@ -9,6 +9,11 @@
             <img :src="User.UserImg" loading="lazy">
 
         </div>
+        <div v-else>
+
+          <LoadingSpinner/>
+          
+                    </div>
         <!-- <button data-bs-toggle="modal" data-bs-target="#UpdateProfilePicture">
           <i class="bi bi-camera-fill"></i>
         </button> -->

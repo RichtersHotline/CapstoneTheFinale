@@ -5,12 +5,18 @@
         <h2 class="text-center text-decoration-none">Please contact Us</h2>
     <p>We’re always here to listen 24/7 if you have a question, a problem or you just want to provide feed back we’re always eager to take your call.</p>
     <h2 class="text-center text-decoration-none">Head Office</h2>
-    <p>Telephone: 082 198 521</p>
-    <p>Email: BrokenHero@gmail.com</p>
+    <i class="bi bi-telephone-fill"></i>
+
+     <p>Telephone: 082 198 521</p>
+     <i class="bi bi-envelope-at-fill"></i>
+     <p>Email: BrokenHero@gmail.com</p>
+     <i class="bi bi-building-fill"></i>
+
     <p>Address: 81 Miami Road, Florida</p>
-    <h2 class="text-center text-decoration-none">Give us a personalised Email</h2>
       </div>
 </div>
+<h2 class="text-center text-decoration-none">Give us a personalised Email</h2>
+
 <div class="Contact">
     <form action="https://formspree.io/f/myzgoplq" id="UserForm"
           method="POST">

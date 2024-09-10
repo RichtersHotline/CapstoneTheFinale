@@ -1,18 +1,19 @@
 <template>
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid d-flex justify-content-start align-items-center">
-        <a class="navbar-brand Logo" href="#">Home Of The Broken Heroes</a>
+        <router-link class="navbar-brand Logo" to="/home">Home Of The Broken Heroes</router-link>
         
-
+      
         <input type="text" placeholder="Search for comrades..." class="form-control SearchBar" id="Searcher">
+        
         <div class="spreader d-flex justify-content-around mt-2">
           <router-link to="/home">
         <i class="bi bi-house-door-fill IconColour h4 ml-3"></i>
       </router-link>
         <i class="bi bi-envelope-fill IconColour h4 ml-3"></i>
-        <i class="bi bi-bell-fill  IconColour h4"></i>
+        <i class="bi bi-bell-fill   IconColour h4"></i>
         <button class="BGRemover" type="submit" @click.prevent="profileViewer">
-        <i class="bi bi-person-fill IconColour h4"></i>
+        <i class="bi bi-person-fill IconColour  h3"></i>
         </button>
         <router-link class="Logout" to="/">Logout</router-link>
 
