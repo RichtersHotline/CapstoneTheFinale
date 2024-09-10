@@ -221,7 +221,7 @@ async updateProfile(req, res) {
         
         
         `;
-      db.query(Query, [data], [req.body], (err) => {
+      db.query(Query, [req.body], (err) => {
         if (err) {
         res.json({
           status: res.statusCode,
