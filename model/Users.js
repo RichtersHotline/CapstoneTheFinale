@@ -200,36 +200,32 @@ SET ?;
   }
   
 // Updating
-async  updateProfile(req, res) {
-  try {
-    const { userPwd, ...otherFields } = req.body;
-
-    // If the password is being updated, hash it
-    if (userPwd) {
-      const hashedPassword = await bcrypt.hash(userPwd, saltRounds);
-      otherFields.userPwd = hashedPassword;
-    }
-
-    const Query = `
-      update Users
-      set ?
-      where userID = ${req.params.id};
-    `;
-
-    db.query(Query, [otherFields], (err) => {
-      if (err) throw new Error("unable to update profile. Contact site Admin");
-      res.json({
-        status: res.statusCode,
-        message: "profile Updated.",
+async updateProfile(req, res) {
+  
+    try {
+      const Query = `
+        
+        update Users
+        set ?
+        where userID = ${req.params.id};
+        
+        
+        `;
+      db.query(Query, [req.body], (err) => {
+        if (err)
+          throw new Error("unable to update profile. Contact site Admin");
+        res.json({
+          status: res.statusCode,
+          message: "profile Updated.",
+        });
       });
-    });
-  } catch (e) {
-    res.json({
-      status: 400,
-      eror: e.message,
-    });
+    } catch (e) {
+      res.json({
+        status: 400,
+        eror: e.message,
+      });
+    }
   }
-}
 // Login 
 async Login(req, res) {
     try {
