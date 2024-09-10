@@ -40,6 +40,7 @@
 import axios from 'axios';
 import { toast } from "vue3-toastify"
 import "vue3-toastify/dist/index.css"
+import Swal from 'sweetalert2'
 
 export default {
   data() {
@@ -98,9 +99,20 @@ export default {
       localStorage.setItem('userId', response.data.result.userID); 
       console.log('Token and user ID stored:', localStorage.getItem('token'), localStorage.getItem('userId'));
       console.log('Navigating to home...');
+      Swal.fire({
+        customClass: {
+    title: 'swal2-header',
+        },
+        title: 'Login Successful',
+    text: 'Welcome back, hero.',
+    icon: 'success',
+    timer: 4000, // 2 seconds
+    showConfirmButton: false
+  }).then(() => {
       this.$router.push('/home').then(() => {
         console.log('Navigation successful');
-      }).catch(err => {
+      })
+    }).catch(err => {
         console.error('Navigation error:', err);
       });
     } else {
@@ -169,8 +181,19 @@ toast.success(`${"Welcome Owner."}`, {
         console.log('Response:', response);
         if (response.data.token) {
           localStorage.setItem('token', response.data.token);
+          Swal.fire({
+        customClass: {
+    title: 'swal2-header',
+        },
+        title: 'Login Successful',
+    text: 'Welcome back, founder.',
+    icon: 'success',
+    timer: 4000, // 2 seconds
+    showConfirmButton: false
+  }).then(() => {
           this.$router.push('/admin');
           console.log(this.userRole)
+  })
         }
         else if(!response.data.token) {
             toast.error(`${"Email Address or Password is not correct. Please check your details."}`, {

@@ -23,8 +23,6 @@
                 <p>{{User.combatStatus}}</p>
                 <h5>Unique ID:</h5>
                 <p>{{ User.userID }}</p>
-                <h5>Comrades:</h5>
-                <p>{{ User.FriendCount }}</p>
                 <h5>Profile Management</h5>
                 <button class="BHBTN" data-bs-toggle="modal" data-bs-target="#UserModel">
                   Edit Profile

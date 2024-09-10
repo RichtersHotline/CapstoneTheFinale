@@ -33,6 +33,7 @@ const routes = [
       name: 'splash',
       component:SplashPageView,
       meta: {hideNavbarComp: true}
+      
     },
     {
       path: '/signup',
@@ -49,7 +50,7 @@ const routes = [
         path: '/admin',
         name: 'Admin',
         component:AdminView,
-        meta: {hideNavbarComp: true}
+        meta: {hideNavbarComp: true},
         }
 ]
 
