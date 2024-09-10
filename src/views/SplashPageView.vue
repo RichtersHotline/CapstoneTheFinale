@@ -40,6 +40,7 @@
 import axios from 'axios';
 import { toast } from "vue3-toastify"
 import "vue3-toastify/dist/index.css"
+
 export default {
   data() {
     return {
@@ -50,72 +51,80 @@ export default {
   },
   methods: {
     async login() {
-      console.log("Email Address:", this.emailAddress);
-      console.log("Entered Password", this.userPwd);
+  console.log("Email Address:", this.emailAddress);
+  console.log("Entered Password", this.userPwd);
 
-      let Email = document.getElementsByName("Email")[0]
-      let Password = document.getElementsByName("password")[0]
-      if (!Email.value.includes('@')) {
-    toast.error(`${"You have entered an invalid email address."}`, {
-          autoClose: 5000,
-          position: toast.POSITION.BOTTOM_CENTER,
-          theme:'dark'
+  let Email = document.getElementsByName("Email")[0];
+  let Password = document.getElementsByName("password")[0];
+  if (!Email.value.includes('@')) {
+    toast.error("You have entered an invalid email address.", {
+      autoClose: 5000,
+      position: toast.POSITION.BOTTOM_CENTER,
+      theme: 'dark'
+    });
+    return;
+  }
 
-        })
-        return;
- } 
- 
- switch(Password.value, Email.value) {
+  if (Password.value === "" || Email.value === "") {
+    toast.error("You have not filled out a field value.", {
+      autoClose: 5000,
+      position: toast.POSITION.BOTTOM_CENTER,
+      theme: 'dark'
+    });
+    return;
+  }
 
-case "":
-toast.error(`${"You have not filled out a field value."}`, {
+  if (Password.value.length > 70) {
+    alert("Please enter values that are less than 70 characters");
+    return;
+  }
+
+  if (Email.value === "Richter") {
+    toast.success("Welcome Owner.", {
+      autoClose: 5000,
+      position: toast.POSITION.BOTTOM_CENTER,
+      theme: 'dark'
+    });
+  }
+
+  try {
+    const response = await axios.post('https://home-of-the-broken-heroes.onrender.com/users/login', {
+      emailAddress: this.emailAddress,
+      userPwd: this.userPwd,
+    });
+    console.log('Response:', response);
+    if (response.data.token && response.data.result) {
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('userId', response.data.result.userID); 
+      console.log('Token and user ID stored:', localStorage.getItem('token'), localStorage.getItem('userId'));
+      console.log('Navigating to home...');
+      this.$router.push('/home').then(() => {
+        console.log('Navigation successful');
+      }).catch(err => {
+        console.error('Navigation error:', err);
+      });
+    } else {
+      console.log('Login failed:', response.data);
+      toast.error("Email Address or Password is not correct. Please check your details.", {
         autoClose: 5000,
         position: toast.POSITION.BOTTOM_CENTER,
-        theme:'dark'
+        theme: 'dark'
+      });
+    }
+  } catch (err) {
+    console.error('Error during login:', err);
+    toast.error("Something went wrong with Login. Please try again later", {
+      autoClose: 5000,
+      position: toast.POSITION.BOTTOM_CENTER,
+      theme: 'dark'
+    });
+  }
+},
 
-      })
-      return;
-      case 70: 
-alert("Please enter values that are less than 70 characters")
-return;
-case "Richter" :
-toast.success(`${"Welcome Owner."}`, {
-        autoClose: 5000,
-        position: toast.POSITION.BOTTOM_CENTER,
-        theme:'dark'
 
-      })}
 
-    //Login Functionality Users
-      try {
-        const response = await axios.post('https://home-of-the-broken-heroes.onrender.com/users/login', {
-            emailAddress: this.emailAddress,
-          userPwd: this.userPwd,
-        });
-        console.log('Response:', response);
-        if (response.data.token) {
-          localStorage.setItem('token', response.data.token);
-          this.$router.push('/home');
-          console.log(this.userRole)
-        }
-        else if(!response.data.token) {
-            toast.error(`${"Email Address or Password is not correct. Please check your details."}`, {
-          autoClose: 5000,
-          position: toast.POSITION.BOTTOM_CENTER,
-          theme:'dark'
-          
-        })
-        return;
-        }
-      } catch (err) {
-        toast.error(`${"Something went wrong with Login. Please try again later"}`, {
-          autoClose: 5000,
-          position: toast.POSITION.BOTTOM_CENTER,
-          theme:'dark'
+  
 
-        })
-      }
-    },
     async Adminlogin() {
       console.log("Email Address:", this.emailAddress);
       console.log("Entered Password", this.adminKey);

@@ -152,6 +152,12 @@ font-family: "Darker Grotesque", sans-serif;
     color:white !important;
 
 }
+.BGRemover {
+
+background-color: transparent !important;
+border:none;
+
+}
 a {
 
 text-decoration:none;

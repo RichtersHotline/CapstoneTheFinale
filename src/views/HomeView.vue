@@ -254,11 +254,15 @@
   </div>
 </div>
 
+<button class="HomeSend" type="submit" @click.prevent="profileViewer">view</button>
 
   </div>
 </template>
 
 <script>
+import { toast } from "vue3-toastify"
+import "vue3-toastify/dist/index.css"
+import axios from "axios";
 // import LoadingSpinner from '@/components/LoadingSpinner.vue';
 export default {
   data() {
@@ -303,6 +307,68 @@ export default {
 
   },
   methods: {
+    async fetchUserData() {
+  const token = localStorage.getItem('token');
+  const userId = localStorage.getItem('userId'); 
+
+  console.log('Token:', token);
+  console.log('User ID:', userId);
+
+  if (!token) {
+    toast.error("Token not found. Please log in again.", {
+      autoClose: 5000,
+      position: toast.POSITION.BOTTOM_CENTER,
+      theme: 'dark'
+    });
+    return null;
+  }
+
+  if (!userId) {
+    toast.error("User ID not found. Please log in again.", {
+      autoClose: 5000,
+      position: toast.POSITION.BOTTOM_CENTER,
+      theme: 'dark'
+    });
+    return null;
+  }
+
+  try {
+    const response = await axios.get(`https://home-of-the-broken-heroes.onrender.com/users/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    console.log('Fetched user data:', response.data);
+    return response.data;
+  } catch (err) {
+    console.error('Error fetching user data:', err);
+    toast.error("Failed to fetch user data. Please try again later.", {
+      autoClose: 5000,
+      position: toast.POSITION.BOTTOM_CENTER,
+      theme: 'dark'
+    });
+    return null;
+  }
+},
+
+async profileViewer() {
+  const userId = localStorage.getItem('userId'); 
+  if (userId) {
+    console.log('Navigating to profile...');
+    this.$router.push(`/profile/${userId}`).then(() => {
+      console.log('Navigation successful');
+    }).catch(err => {
+      console.error('Navigation error:', err);
+    });
+  } else {
+    toast.error("User data not found. Please log in again.", {
+      autoClose: 5000,
+      position: toast.POSITION.BOTTOM_CENTER,
+      theme: 'dark'
+    });
+  }
+},
+
     fetchUser() {
       this.$store.dispatch("fetchOneUser", this.$route.params.id);
     },
