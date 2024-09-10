@@ -203,6 +203,16 @@ SET ?;
 async updateProfile(req, res) {
   
     try {
+      let data = req.body
+      // encrypts the users password to 12 random characters also known as salt (???)
+      data.userPwd = await hash(data.userPwd, 12)
+      //   Payload
+      let user = {
+
+          emailAddress: data.emailAddress,
+          userPwd: data.userPwd
+
+      }
       const Query = `
         
         update Users
@@ -211,14 +221,25 @@ async updateProfile(req, res) {
         
         
         `;
-      db.query(Query, [req.body], (err) => {
-        if (err)
-          throw new Error("unable to update profile. Contact site Admin");
+      db.query(Query, [data], [req.body], (err) => {
+        if (err) {
         res.json({
           status: res.statusCode,
           message: "profile Updated.",
         });
+      } else {
+        const token = createToken(user)
+        res.json({
+            token,
+            eror: "Thank you for registering"
+
+
+        })
+
+
+      }
       });
+     
     } catch (e) {
       res.json({
         status: 400,
