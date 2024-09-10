@@ -7,7 +7,167 @@
     <link rel="stylesheet" href="../Style/Style.css">
 </head>
 <body>
-    <h2>Welcome, operative to the Broken Hero API </h2>
-
+    <h2>Welcome, founder to the Broken Hero API </h2>
+    <div class="TableCon">
+        
+        <h3>Users</h3>
+        <table>
+          <tr >
+            <th>Name</th>
+            <th>Info</th>
+            <th>Path</th>
+            <th>Method</th>
+        
+          </tr>
+          <tr >
+            <td>Fetch All Users</td>
+            <td>Fetches all available users</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/users</td>
+                <td>GET</td>
+        
+          </tr>
+          <tr>
+            <td>Fetch a single user</td>
+            <td>Fetches a single user based on their userID</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/users/:id</td>
+                    <td>GET</td>
+        
+          </tr>
+           <tr>
+            <td>Register a User</td>
+            <td>Registers a User</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/users/register</td>
+                    <td>POST</td>
+        
+          </tr>
+          <tr>
+            <td>Updates a User</td>
+            <td>Updates a User based on their user ID</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/users/users/:id</td>
+                    <td>PATCH</td>
+        
+          </tr>
+          <tr>
+            <td>Logs in a User</td>
+            <td>Allows a user to login</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/users/users/login</td>
+                    <td>POST</td>
+        
+          </tr>
+          <tr>
+            <td>Deletes a User</td>
+            <td>Deletes a User based on their user ID</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/users/users/:id</td>
+            <td>DELETE</td>
+        
+          </tr>
+          <tr>
+            <td>Logs in an Admin</td>
+            <td>Allows an admin to login into the admin page</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/users/users/login/admin</td>
+                    <td>POST</td>
+        
+          </tr>
+          <tr>
+            <td>Registers an Admin</td>
+            <td>Allows an admin to be registered</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/users/users/registerAdmin</td>
+                    <td>POST</td>
+        
+          </tr>
+        </table>
+        <h3>Posts</h3>
+        <table>
+          <tr >
+            <th>Name</th>
+            <th>Info</th>
+            <th>Path</th>
+            <th>Method</th>
+        
+          </tr>
+          <tr >
+            <td>Fetch All Posts</td>
+            <td>Fetches all available posts</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/posts</td>
+                <td>GET</td>
+        
+          </tr>
+          <tr>
+            <td>Fetch a single post</td>
+            <td>Fetches a single post based on it's postID</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/posts/:id</td>
+                    <td>GET</td>
+        
+          </tr>
+           <tr>
+            <td>Post a Message</td>
+            <td>Allows user to post a message</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/posts/post</td>
+                    <td>POST</td>
+        
+          </tr>
+          <tr>
+            <td>Updates a post</td>
+            <td>Updates a post based on it's postID</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/users/posts/:id</td>
+                    <td>PATCH</td>
+        
+          </tr>
+          <tr>
+            <td>Deletes a post</td>
+            <td>Deletes a post based on it's postID</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/users/posts/:id</td>
+            <td>DELETE</td>
+        
+          </tr>
+          </table>
+          <h3>Replies</h3>
+        
+        <table>
+          <tr >
+            <th>Name</th>
+            <th>Info</th>
+            <th>Path</th>
+            <th>Method</th>
+        
+          </tr>
+          <tr >
+            <td>Fetch All Replies</td>
+            <td>Fetches all available replies</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/comment</td>
+                <td>GET</td>
+        
+          </tr>
+          <tr>
+            <td>Fetch a single reply</td>
+            <td>Fetches a single reply based on it's commentID</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/comment/:id</td>
+                    <td>GET</td>
+        
+          </tr>
+           <tr>
+            <td>Post a reply</td>
+            <td>Allows user to post a reply</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/comment/post/comment</td>
+                    <td>POST</td>
+        
+          </tr>
+          <tr>
+            <td>Updates a reply</td>
+            <td>Updates a post based on it's commentID</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/users/comment/:id</td>
+                    <td>PATCH</td>
+        
+          </tr>
+          <tr>
+            <td>Deletes a reply</td>
+            <td>Deletes a reply based on it's commentID</td>
+            <td>https://home-of-the-broken-heroes.onrender.com/users/comment/:id</td>
+            <td>DELETE</td>
+        
+          </tr>
+        </table>
+        
+    </div>
 </body>
 </html>
