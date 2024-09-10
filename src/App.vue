@@ -5,7 +5,7 @@
 <router-view/>
 
 </main>
-<FooterComp v-if="!$route.meta.hideFooter"/>
+<FooterComp v-if="!$route.meta.hideNavbarComp"/>
 </div>
 </template>
 <script>

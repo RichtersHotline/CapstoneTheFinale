@@ -108,6 +108,15 @@ box-sizing:border-box;
 
    }
 }
+/* Sweet Alerts */
+
+.swal2-header {
+
+    color:black !important;
+
+}
+
+
 :is(h1, h2, h3, h4, h5) {
 
     color:white !important;
