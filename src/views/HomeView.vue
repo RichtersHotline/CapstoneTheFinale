@@ -12,6 +12,9 @@
     </router-link>"
   </div>
   </div>
+  <div v-else>
+  <LoadingSpinner/>
+</div>
   <div class="HomeCon">
   <h5 class="HomeThought">Speak freely, </h5>
   <textarea id="HomeMsg" v-model="payloadPosts.Msg" placeholder="Write your message..."></textarea>
@@ -57,8 +60,13 @@
   </div>
 
 </div>
+<div v-else>
 
+  <LoadingSpinner/>
+  
+            </div>
 </div>
+<div v-if="Replies">
 <div class="ReplyContainer mt-4" v-for="reply in Replies.slice(8, 12)" :key="reply.commentID">
   <div class="Messages">
     <h5 class="NameBG">John Doe replied on {{reply.DatePosted }}</h5>
@@ -86,7 +94,12 @@
 
 
 </div>
+</div>
+<div v-else>
 
+  <LoadingSpinner/>
+  
+            </div>
 <!-- Modals -->
 <div class="modal fade" id="DeleteUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -254,7 +267,6 @@
   </div>
 </div>
 
-<button class="HomeSend" type="submit" @click.prevent="profileViewer">view</button>
 
   </div>
 </template>
@@ -263,7 +275,7 @@
 import { toast } from "vue3-toastify"
 import "vue3-toastify/dist/index.css"
 import axios from "axios";
-// import LoadingSpinner from '@/components/LoadingSpinner.vue';
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
 export default {
   data() {
     return {
@@ -303,7 +315,7 @@ export default {
 
   },
   components: {
-// LoadingSpinner
+LoadingSpinner
 
   },
   methods: {
