@@ -510,13 +510,39 @@ console.log(this.payloadPosts.Msg)
     },
     PostMessage() {
       try {
-        this.$store.dispatch("PostMessage", this.payloadPosts); 
-        document.getElementById("Msg").value = ""
+        const storedUserID = +localStorage.getItem('userId'); 
+    console.log('Retrieved userID from local storage:', storedUserID); 
+    const targetUserID = this.User.userID
+    console.log('Target userID:', targetUserID); 
 
+    if (storedUserID === targetUserID) {
+      this.$store.dispatch("PostMessage", this.payloadPosts); 
+        document.getElementById("Msg").value = ""
         console.log(this.payloadPosts)
+        .catch(error => {
+          console.error("Error with Posting", error);
+          toast.error("Error", {
+    autoClose: 5000,
+    position: toast.POSITION.BOTTOM_CENTER,
+    theme: 'dark'
+  });
+        });
+        
+      } else {
+        toast.error("You are not the owner of this account.", {
+    autoClose: 5000,
+    position: toast.POSITION.BOTTOM_CENTER,
+    theme: 'dark'
+  });
+
+      }
       } catch (e) {
 
-        console.log("error")
+        toast.success("Post completed", {
+    autoClose: 5000,
+    position: toast.POSITION.BOTTOM_CENTER,
+    theme: 'dark'
+  });
 
       }
 
@@ -524,15 +550,41 @@ console.log(this.payloadPosts.Msg)
     imageAddition() {
 
       try {
-   this.$store.dispatch("PostMessage", this.payloadPosts)
-   console.log(this.payloadPosts)
+        const storedUserID = +localStorage.getItem('userId'); 
+    console.log('Retrieved userID from local storage:', storedUserID); 
+    const targetUserID = this.User.userID
+    console.log('Target userID:', targetUserID); 
 
+    if (storedUserID === targetUserID) {
+      this.$store.dispatch("PostMessage", this.payloadPosts); 
+        document.getElementById("Msg").value = ""
+        console.log(this.payloadPosts)
+        .catch(error => {
+          console.error("Error with Posting", error);
+          toast.error("Error", {
+    autoClose: 5000,
+    position: toast.POSITION.BOTTOM_CENTER,
+    theme: 'dark'
+  });
+        });
+        
+      } else {
+        toast.error("You are not the owner of this account.", {
+    autoClose: 5000,
+    position: toast.POSITION.BOTTOM_CENTER,
+    theme: 'dark'
+  });
 
-    } catch(e) {
+      }
+      } catch (e) {
 
-      console.log("error")
+        toast.success("Post completed", {
+    autoClose: 5000,
+    position: toast.POSITION.BOTTOM_CENTER,
+    theme: 'dark'
+  });
 
-    }
+      }
   },
     fetchReplies() {
 
@@ -543,6 +595,7 @@ console.log(this.payloadPosts.Msg)
     postReply() {
 
     this.$store.dispatch("PostReply", this.payloadReply);
+
     console.log(this.payloadReply)
 
     },
