@@ -516,7 +516,6 @@ console.log(this.payloadPosts.Msg)
     },
     PostMessage() {
       try {
-        let usersMessage = document.getElementById("Msg")
         const storedUserID = +localStorage.getItem('userId'); 
     console.log('Retrieved userID from local storage:', storedUserID); 
     const targetUserID = this.User.userID
@@ -535,10 +534,6 @@ console.log(this.payloadPosts.Msg)
   });
         });
         
-      }
-      if(usersMessage.value.length < 1) {
-       alert("No Message")
-
       }
       else {
         toast.error("You are not the owner of this account.", {
