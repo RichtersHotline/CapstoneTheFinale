@@ -407,25 +407,32 @@ LoadingSpinner
     profileUpdate() {
       try {
       const storedUserID = localStorage.getItem('userId'); 
-    console.log('Retrieved userID from local storage:', storedUserID); // 
+    console.log('Retrieved userID from local storage:', storedUserID); 
     const targetUserID = this.payload.userID; 
     console.log('Target userID:', targetUserID); 
 
     if (storedUserID === targetUserID) {
       this.$store.dispatch('updateUser', { id: this.payload.userID, data: this.payload })
         .then(() => {
-          alert("Your profile has been updated. The page will now refresh");
           location.reload();
         })
         .catch(error => {
           console.error("Error updating profile:", error);
-          alert("There was an error updating your profile. Please try again.");
+          toast.error("Error", {
+    autoClose: 5000,
+    position: toast.POSITION.BOTTOM_CENTER,
+    theme: 'dark'
+  });
         });
     } else {
-      alert("Invalid userID. You are not authorized to update this profile.");
+      toast.error("You are not the owner of this account.", {
+    autoClose: 5000,
+    position: toast.POSITION.BOTTOM_CENTER,
+    theme: 'dark'
+  });
     }
   } catch (e) {
-    toast.error("Your profile could not be updated at this time", {
+    toast.error("Deleting is not possible at this time. Please try again later", {
         autoClose: 5000,
         position: toast.POSITION.BOTTOM_CENTER,
         theme: 'dark'
@@ -436,6 +443,7 @@ LoadingSpinner
 }
 
   },
+  
   
     profilePictureUpdate() {
 
@@ -454,16 +462,27 @@ LoadingSpinner
       .then(() => {
         setTimeout(() => {
           window.location.href = "/";
-          alert("Your profile has been deleted. Thank you for your service");
-          location.reload();
+          toast.success("Profile Deleted. Thank you for your service", {
+    autoClose: 5000,
+    position: toast.POSITION.BOTTOM_CENTER,
+    theme: 'dark'
+  });
         }, 2000);
       })
       .catch(error => {
         console.error("Error deleting profile:", error);
-        alert("There was an error deleting your profile. Please try again.");
+        toast.error("Could not delete profile at this time.", {
+    autoClose: 5000,
+    position: toast.POSITION.BOTTOM_CENTER,
+    theme: 'dark'
+  });
       });
   } else {
-    alert("Invalid userID. You are not authorized to delete this profile.");
+    toast.error("You are not the owner of this account.", {
+    autoClose: 5000,
+    position: toast.POSITION.BOTTOM_CENTER,
+    theme: 'dark'
+  });
   }
 } catch (e) {
   console.error("An error occurred:", e);
