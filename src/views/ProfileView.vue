@@ -286,7 +286,7 @@
   </div>
   <div v-if="fetchPosts">
     <div class="MessageContainer" v-for="post in Post" :key="post.postID">
-      <h5 class="NameBG">John Doe posted on {{post.DatePosted}}</h5>
+      <h5 class="NameBG">John Doe posted on <span>{{formattedDate}}</span></h5>
       <div class="Messages">
       <h5 class="UserMessage">{{ post.Msg }}</h5>
       <h5>{{post.postID}}</h5>
@@ -359,6 +359,11 @@ import { toast } from "vue3-toastify"
 
 export default {
   data() {
+    const timePosted = new Date();
+    const day = timePosted.getUTCDate();
+    const month = timePosted.getUTCMonth() + 1;
+    const year = timePosted.getUTCFullYear();
+    const formattedDate = `0${day}:0${month}:${year}`;
     return {
       payload: {
         firstName: "",
@@ -387,6 +392,7 @@ export default {
 
 
         },
+     formattedDate,
 
       Confirmation:"Thank you for your service. You have been discharged."
 
@@ -510,6 +516,7 @@ console.log(this.payloadPosts.Msg)
     },
     PostMessage() {
       try {
+        let usersMessage = document.getElementById("Msg")
         const storedUserID = +localStorage.getItem('userId'); 
     console.log('Retrieved userID from local storage:', storedUserID); 
     const targetUserID = this.User.userID
@@ -528,7 +535,12 @@ console.log(this.payloadPosts.Msg)
   });
         });
         
-      } else {
+      }
+      if(usersMessage.value.length < 1) {
+       alert("No Message")
+
+      }
+      else {
         toast.error("You are not the owner of this account.", {
     autoClose: 5000,
     position: toast.POSITION.BOTTOM_CENTER,
