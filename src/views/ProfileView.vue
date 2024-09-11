@@ -29,7 +29,7 @@
                 <h5>Unique ID:</h5>
                 <p>{{ User.userID }}</p>
                 <h5>Profile Management</h5>
-                <button class="BHBTN" data-bs-toggle="modal" data-bs-target="#UserModel">
+                <button class="BHBTN" id="edit" data-bs-toggle="modal" data-bs-target="#UserModel">
                   Edit Profile
                 </button>
                 <div class="deleteCon mt-3">
@@ -355,6 +355,8 @@
 
 <script>
 import LoadingSpinner from '@/components/LoadingSpinner.vue';
+import { toast } from "vue3-toastify"
+
 export default {
   data() {
     return {
@@ -403,12 +405,38 @@ LoadingSpinner
       this.$store.dispatch("fetchOneUser", this.$route.params.id);
     },
     profileUpdate() {
-      this.$store.dispatch('updateUser', { id: this.payload.userID, data: this.payload });
-      alert("Your profile has been updated. The page will now refresh")
-      location.reload()
+      try {
+      const storedUserID = localStorage.getItem('userId'); 
+    console.log('Retrieved userID from local storage:', storedUserID); // 
+    const targetUserID = this.payload.userID; 
+    console.log('Target userID:', targetUserID); 
+
+    if (storedUserID === targetUserID) {
+      this.$store.dispatch('updateUser', { id: this.payload.userID, data: this.payload })
+        .then(() => {
+          alert("Your profile has been updated. The page will now refresh");
+          location.reload();
+        })
+        .catch(error => {
+          console.error("Error updating profile:", error);
+          alert("There was an error updating your profile. Please try again.");
+        });
+    } else {
+      alert("Invalid userID. You are not authorized to update this profile.");
+    }
+  } catch (e) {
+    toast.error("Your profile could not be updated at this time", {
+        autoClose: 5000,
+        position: toast.POSITION.BOTTOM_CENTER,
+        theme: 'dark'
+    });
 
 
-    },
+
+}
+
+  },
+  
     profilePictureUpdate() {
 
       this.$store.dispatch('updateUser', {id: this.payload.userID, data: this.payload.UserImg});
@@ -416,25 +444,35 @@ LoadingSpinner
     },
     userDeletion() {
       try {
-        
-        this.$store.dispatch("deleteUser", this.payload.userID);
+  const storedUserID = localStorage.getItem('userId'); 
+  console.log('Retrieved userID from local storage:', storedUserID); 
+  const targetUserID = this.payload.userID.toString(); // Ensure targetUserID is a string
+  console.log('Target userID:', targetUserID); 
+
+  if (storedUserID === targetUserID) {
+    this.$store.dispatch("deleteUser", this.payload.userID)
+      .then(() => {
         setTimeout(() => {
-
-          window.location.href="/";
-          
-
-
-        }, "2000")
-
-      } catch (error) {
-
-        console.error(error);
-
-
-      }
-
-
-
+          window.location.href = "/";
+          alert("Your profile has been deleted. Thank you for your service");
+          location.reload();
+        }, 2000);
+      })
+      .catch(error => {
+        console.error("Error deleting profile:", error);
+        alert("There was an error deleting your profile. Please try again.");
+      });
+  } else {
+    alert("Invalid userID. You are not authorized to delete this profile.");
+  }
+} catch (e) {
+  console.error("An error occurred:", e);
+  toast.error("Your profile could not be deleted at this time", {
+    autoClose: 5000,
+    position: toast.POSITION.BOTTOM_CENTER,
+    theme: 'dark'
+  });
+}
     },
     postDeletion(postID) {
 
