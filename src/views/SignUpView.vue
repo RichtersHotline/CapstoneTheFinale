@@ -78,7 +78,6 @@
 
 </div>
 
-
 </div>
 </div>
 
@@ -119,16 +118,18 @@ users() {
 
 },
 methods: {
+  
 Registration() {
   let Email = document.getElementsByName("Email")[0]
-  const userEmail = document.getElementsByName("Email")[0]
   let FName = document.getElementsByName("FirstName")[0]
   let LName = document.getElementsByName("LastName")[0]
   let Phone = document.getElementsByName("Phone")[0]
   let Rank = document.getElementsByName("Rank")[0]
   let pwd = document.getElementsByName("pwd")[0]
   let Status = document.getElementsByName("Status")[0]
-  
+  let emailList = this.users.map(user => user.emailAddress);
+  let emailExists = emailList.includes(Email.value);
+
   try {
     if (!FName.value || !LName.value || !Phone.value || !Rank.value || !pwd.value || !Status.value) {
     toast.error("Please fill out all fields.", {
@@ -150,12 +151,10 @@ Registration() {
         return;
         
     } 
-    const isDuplicateEmail = (userEmail, users) => {
-        return users.some(user => user.email === userEmail);
-    };
+    
 
-    if (isDuplicateEmail(userEmail, this.users)) {
-        toast.error("You have entered a duplicate Email.", {
+    if (emailExists) {
+        toast.error("You are already registered.", {
             autoClose: 5000,
             position: toast.POSITION.BOTTOM_CENTER,
             theme: 'dark'
@@ -166,6 +165,7 @@ Registration() {
 
      
     else {
+      console.log(Email.value)
         console.log(this.payload);
     this.$store.dispatch("addAUser", this.payload);
     setTimeout(() => {
