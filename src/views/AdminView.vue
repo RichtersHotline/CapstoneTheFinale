@@ -1,7 +1,11 @@
 <template>
   <div class="container-fluid">
     <h1 class="text-center">Welcome, Founder</h1>
-  
+    <router-link class="Logout" to="/">Logout</router-link>
+
+    <button class="BHBTN" id="edit" data-bs-toggle="modal" data-bs-target="#adminModel">
+     Add a new Admin
+    </button>
     <table class="table-dark UserTable">
         <thead>
           <tr>
@@ -14,6 +18,8 @@
        <th>Combat Status</th>
        <th>User's Password</th>
        <th>User's Profile Image</th>
+       <th>Admin's Key</th>
+
           </tr>
         </thead>
         <tbody v-if="Users">
@@ -28,6 +34,7 @@
             <td>{{ user.userPwd }}</td>
             <td>{{ user.UserImg }}</td>
             <td>{{ user.userRole }}</td>
+            <td>{{ user.adminKey }}</td>
 
             <td><button
           class="btn btn-success" data-bs-toggle="modal" data-bs-target="#UserModel">
@@ -43,7 +50,13 @@
           </button>
         </td>
           </tr>
+          
     </tbody>
+    <div v-else>
+
+      <LoadingSpinner/>
+      
+                </div>
 </table>
 <table class="table-dark">
     <thead>
@@ -78,6 +91,11 @@
       </button>
       </tr>
 </tbody>
+<div v-else>
+
+  <LoadingSpinner/>
+  
+            </div>
 </table>
 <table class="table-dark">
     <thead>
@@ -110,6 +128,11 @@
       </button>
       </tr>
 </tbody>
+<div v-else>
+
+  <LoadingSpinner/>
+  
+            </div>
 </table>
 <!-- Modal -->
 <div class="modal fade" id="UserModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -123,27 +146,69 @@
           <div class="row text-center">
             <div class="col">
               <h4>Enter your Unique ID</h4>
-              <input type="text" id="productName" v-model="this.payload.userID">
+              <input type="text" id="uID" v-model="this.payload.userID">
               <h4>Enter new first name</h4>
 
-              <input type="text" id="userName" v-model="payload.firstName">
+              <input type="text" id="Fname" v-model="payload.firstName">
               <h4>Enter new last Name</h4>
-              <input type="text" id="userName" v-model="payload.lastName">
+              <input type="text" id="Lname" v-model="payload.lastName">
               <h4>Enter new mobile number</h4>
-              <input type="number" id="userName" v-model="payload.mobileNumber">
+              <input type="number" id="Mn" v-model="payload.mobileNumber">
               <h4>Enter new email address</h4>
-              <input type="text" id="userName" v-model="payload.emailAddress">
+              <input type="text" id="EA" v-model="payload.emailAddress">
               <h4>Enter new rank</h4>
-              <input type="text" id="userName" v-model="payload.UnitorRank">
+              <input type="text" id="UoR" v-model="payload.UnitorRank">
               <h4>Enter new Combat Status</h4>
-              <input type="text" id="userName" v-model="payload.combatStatus">
+              <input type="text" id="CS" v-model="payload.combatStatus">
               <h4>Enter new password</h4>
-              <input type="password" id="userName" v-model="payload.userPwd">
+              <input type="password" id="pwd" v-model="payload.userPwd">
               <h4>Choose new profile picture</h4>
-              <input type="text" id="userName" v-model="payload.UserImg">
+              <input type="text" id="userImg" v-model="payload.UserImg">
               <h4>Choose new Role</h4>
-              <input type="text" id="userName" v-model="payload.userRole">
+              <input type="text" id="Role" readonly v-model="payload.userRole">
               <button type="submit" class="mb-4" @click.prevent="profileUpdate" id="ProductBtn2">Update
+                Profile</button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="adminModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Adding new admin...</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row text-center">
+            <div class="col">
+              <h4>Enter new first name</h4>
+
+              <input type="text" id="Fname" v-model="payload.firstName">
+              <h4>Enter new last Name</h4>
+              <input type="text" id="Lname" v-model="payload.lastName">
+              <h4>Enter new mobile number</h4>
+              <input type="number" id="Mn" v-model="payload.mobileNumber">
+              <h4>Enter new email address</h4>
+              <input type="text" id="EA" v-model="payload.emailAddress">
+              <h4>Enter new rank</h4>
+              <input type="text" id="UoR" v-model="payload.UnitorRank">
+              <h4>Enter new Combat Status</h4>
+              <input type="text" id="CS" v-model="payload.combatStatus">
+              <h4>Enter new password</h4>
+              <input type="password" id="adkey" v-model="payload.adminKey">
+              <h4>Choose new profile picture</h4>
+              <input type="text" id="userImg" v-model="payload.UserImg">
+              <h4>Role</h4>
+              <input type="text" id="Role" readonly v-model="payload.userRole">
+              <button type="submit" class="mb-4" @click.prevent="adminRegistration" id="ProductBtn2">Update
                 Profile</button>
             </div>
 
@@ -215,6 +280,7 @@
 </template>
 
 <script>
+import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import { toast } from "vue3-toastify"
 import "vue3-toastify/dist/index.css"
 export default {
@@ -229,7 +295,8 @@ export default {
         combatStatus: "",
         userPwd: "",
         UserImg: "",
-        userRole:"",
+        userRole:"Admin",
+        adminKey:"",
       },
       payloadPosts: {
         Msg: "",
@@ -247,6 +314,11 @@ export default {
 
 
         },
+        payloadAdmin: {
+
+        
+
+          },
 
       Confirmation:"Thank you for your service. You have been discharged."
 
@@ -257,7 +329,7 @@ export default {
 
   },
   components: {
-// LoadingSpinner
+LoadingSpinner
 
   },
   methods: {
@@ -265,6 +337,26 @@ export default {
     //   this.$store.dispatch("fetchOneUser", this.$route.params.id);
     // },
     profileUpdate() {
+      let firstName = document.getElementById("Fname")
+     let lastName = document.getElementById("Lname")
+     let mobileNumber = document.getElementById("Mn")
+     let Email = document.getElementById("EA")
+     let Rank = document.getElementById("UoR")
+     let Status = document.getElementById("CS")
+     let Password = document.getElementById("pwd")
+     let Image = document.getElementById("userImg")
+    //  let userRole = document.getElementById("Role")
+     try {
+    if (!firstName.value || !lastName.value || !mobileNumber.value || !Email.value || !Rank.value || !Status.value || !Password.value || !Image.value) {
+      toast.error(`${"Please fill out all fields"}`, {
+          autoClose: 5000,
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
+
+        })      
+return;
+    }
+    
       this.$store.dispatch('updateUser', { id: this.payload.userID, data: this.payload });
       toast.success(`${"The User's Profile has been updated. Refreshing...."}`, {
           autoClose: 5000,
@@ -275,7 +367,16 @@ export default {
         location.reload()
 
 
-    },
+    } catch (e) {
+      toast.error(`${"Couldn't update please try again later."}`, {
+          autoClose: 5000,
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
+
+        })
+
+    }
+  },
     profilePictureUpdate() {
 
       this.$store.dispatch('updateUser', {id: this.payload.userID, data: this.payload.UserImg});
@@ -359,7 +460,89 @@ console.log(this.payloadPosts.Msg)
       
       console.log( "Id" + this.payload.commentID, "Data" + this.payloadReply.Reply)    
 
+    },
+    adminRegistration() {
+      let firstName = document.getElementById("Fname")
+     let lastName = document.getElementById("Lname")
+     let mobileNumber = document.getElementById("Mn")
+     let Email = document.getElementById("EA")
+     let Rank = document.getElementById("UoR")
+     let Status = document.getElementById("CS")
+     let Password = document.getElementById("adkey")
+  let emailList = this.Users.map(user => user.emailAddress);
+  let emailExists = emailList.includes(Email.value);
+
+  try {
+    if (!firstName.value || !lastName.value || !mobileNumber.value || !Rank.value || !Password.value || !Status.value || !Email.value) {
+    toast.error("Please fill out all fields.", {
+        autoClose: 5000,
+        position: toast.POSITION.BOTTOM_CENTER,
+        theme: 'dark'
+    });
+    return;
+      
     }
+    
+
+    if (!Email.value.includes('@')) {
+        toast.error("You have entered an invalid email address.", {
+            autoClose: 5000,
+            position: toast.POSITION.BOTTOM_CENTER,
+            theme: 'dark'
+        });
+        return;
+        
+    } 
+    
+
+    if (emailExists) {
+        toast.error("You are already registered.", {
+            autoClose: 5000,
+            position: toast.POSITION.BOTTOM_CENTER,
+            theme: 'dark'
+        });
+        return;
+}
+
+
+     
+    else {
+      console.log(Email.value)
+        console.log(this.payload);
+    this.$store.dispatch("addAdmin", this.payload);
+    setTimeout(() => {
+
+window.location.href="/";
+
+
+
+}, "5000")
+        
+      }
+
+    
+    
+    
+  
+  
+
+  
+   
+
+} catch (error) {
+
+    toast.error(`${"Registration could not be completed. Please try again later."}`, {
+          autoClose: 5000,
+          position: toast.POSITION.BOTTOM_CENTER,
+          theme:'dark'
+
+        })
+
+  }
+
+
+
+},
      
   },
 
