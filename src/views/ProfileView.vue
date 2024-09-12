@@ -88,24 +88,24 @@
             <div class="row text-center">
               <div class="col">
                 <h4>Enter your Unique ID</h4>
-                <input type="text" id="productName" v-model="this.payload.userID">
+                <input type="text" id="uID" v-model="this.payload.userID" >
                 <h4>Enter new first name</h4>
 
-                <input type="text" id="userName" v-model="payload.firstName">
+                <input type="text" id="Fname" v-model="payload.firstName">
                 <h4>Enter new last Name</h4>
-                <input type="text" id="userName" v-model="payload.lastName">
+                <input type="text" id="Lname" v-model="payload.lastName">
                 <h4>Enter new mobile number</h4>
-                <input type="number" id="userName" v-model="payload.mobileNumber">
+                <input type="number" id="Mn" v-model="payload.mobileNumber">
                 <h4>Enter new email address</h4>
-                <input type="text" id="userName" v-model="payload.emailAddress">
+                <input type="text" id="EA" v-model="payload.emailAddress">
                 <h4>Enter new rank</h4>
-                <input type="text" id="userName" v-model="payload.UnitorRank">
+                <input type="text" id="UoR" v-model="payload.UnitorRank">
                 <h4>Enter new Combat Status</h4>
-                <input type="text" id="userName" v-model="payload.combatStatus">
+                <input type="text" id="CS" v-model="payload.combatStatus">
                 <h4>Enter new password</h4>
-                <input type="password" id="userName" v-model="payload.userPwd">
+                <input type="password" id="pwd" v-model="payload.userPwd">
                 <h4>Choose your new profile picture</h4>
-                <input type="text" id="userName" v-model="payload.UserImg">
+                <input type="text" id="userImg" v-model="payload.UserImg">
                 <button type="submit" class="mb-4" @click.prevent="profileUpdate" id="ProductBtn2">Update
                   Profile</button>
               </div>
@@ -411,11 +411,29 @@ LoadingSpinner
       this.$store.dispatch("fetchOneUser", this.$route.params.id);
     },
     profileUpdate() {
+     let firstName = document.getElementById("Fname")
+     let lastName = document.getElementById("Lname")
+     let mobileNumber = document.getElementById("Mn")
+     let Email = document.getElementById("EA")
+     let Rank = document.getElementById("UoR")
+     let Status = document.getElementById("CS")
+     let Password = document.getElementById("pwd")
+     let Image = document.getElementById("userImg")
+
       try {
       const storedUserID = localStorage.getItem('userId'); 
     console.log('Retrieved userID from local storage:', storedUserID); 
     const targetUserID = this.payload.userID; 
     console.log('Target userID:', targetUserID); 
+    if (!firstName.value || !lastName.value || !mobileNumber.value || !Email.value || !Rank.value || !Status.value || !Password.value || !Image.value) {
+      toast.error("Please fill out all fields.", {
+    autoClose: 5000,
+    position: toast.POSITION.BOTTOM_CENTER,
+    theme: 'dark'
+  });
+return;
+
+    }
 
     if (storedUserID === targetUserID) {
       this.$store.dispatch('updateUser', { id: this.payload.userID, data: this.payload })
@@ -458,10 +476,21 @@ LoadingSpinner
     },
     userDeletion() {
       try {
+        let usersID = document.getElementById("uID")
   const storedUserID = localStorage.getItem('userId'); 
   console.log('Retrieved userID from local storage:', storedUserID); 
   const targetUserID = this.payload.userID.toString(); // Ensure targetUserID is a string
   console.log('Target userID:', targetUserID); 
+
+  if(!usersID.value) {
+    toast.error("Please enter your UserID.", {
+    autoClose: 5000,
+    position: toast.POSITION.BOTTOM_CENTER,
+    theme: 'dark'
+  });
+return;
+
+  }
 
   if (storedUserID === targetUserID) {
     this.$store.dispatch("deleteUser", this.payload.userID)
