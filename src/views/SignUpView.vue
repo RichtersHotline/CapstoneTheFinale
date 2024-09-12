@@ -73,7 +73,7 @@
 </div>
   </div>
 <div class="UserContent" id="UserCon" v-for="user in users" :key="user.userID">
-<div v-if="users">
+<div v-if="users" class="hidden">
 {{user.emailAddress}}
 
 </div>
