@@ -1,10 +1,15 @@
 <template>
+  <div class="Entire">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid d-flex justify-content-start align-items-center">
         <router-link class="navbar-brand Logo" to="/home">Home Of The Broken Heroes</router-link>
         
       
-        <input type="text" placeholder="Search for comrades..." class="form-control SearchBar" id="Searcher">
+        <router-link class="me-1 txt"   activeClass="border-indigo-500"
+  to="/about">About</router-link>
+  <router-link class="me-1 txt" to="/contact">Contact</router-link>
+  <router-link class="me-1 txt" to="/signup">signup</router-link>
+    </div>
         
         <div class="spreader d-flex justify-content-around mt-2">
           <router-link to="/home">
@@ -21,9 +26,9 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-      </div>
+      
     </nav>
-    
+  </div>
   </template>
 <script>
 import { toast } from "vue3-toastify"

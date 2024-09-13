@@ -15,7 +15,7 @@
   <div v-else>
   <LoadingSpinner/>
 </div>
-  <div class="HomeCon">
+  <!-- <div class="HomeCon">
   <h5 class="HomeThought">Speak freely, </h5>
   <textarea id="HomeMsg" v-model="payloadPosts.Msg" placeholder="Write your message..."></textarea>
   <div class="HomeHandling">
@@ -28,7 +28,7 @@
   </div>
 
 
-</div>
+</div> -->
 </div>
 <div class="HomeConPosts">
 <h2 class="text-center mb-5">Your Feed</h2>
