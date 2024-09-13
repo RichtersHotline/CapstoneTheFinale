@@ -159,6 +159,21 @@ font-family: "Darker Grotesque", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
+ 
+}
+.Entire {
+
+    position:sticky;
+    top:0;
+    z-index:9999;
+    opacity:0.7;
+  
+  }
+nav {
+
+    position:sticky;
+    top:0;
+
 }
 .Logout {
 

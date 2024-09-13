@@ -6,6 +6,7 @@ import SplashPageView from '../views/SplashPageView.vue'
 import SignUpView from '../views/SignUpView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import AdminView from '../views/AdminView.vue'
+import SinglePost from '../views/SinglePost.vue'
 
 const routes = [
   {
@@ -51,6 +52,13 @@ const routes = [
         name: 'Admin',
         component:AdminView,
         meta: {hideNavbarComp: true},
+        },
+        {
+
+          path: '/SinglePost/:id',
+          name: 'SinglePost',
+          component:SinglePost,
+
         }
 ]
 

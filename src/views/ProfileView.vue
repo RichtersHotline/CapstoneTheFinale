@@ -303,6 +303,11 @@
         <button class="PostDelBtn" data-bs-toggle="modal" data-bs-target="#postReply">
           Reply 
         </button>
+        <router-link :to="{name: 'SinglePost', params: { id: post.postID } }">
+        <button class="PostDelBtn">
+          View 
+        </button>
+        </router-link>
       </div>
     </div>
 
@@ -336,6 +341,7 @@
         <button class="PostDelBtn" data-bs-toggle="modal" data-bs-target="#postReply">
           Reply 
         </button>
+        
       </div>
 
 
@@ -409,6 +415,11 @@ LoadingSpinner
   methods: {
     fetchUser() {
       this.$store.dispatch("fetchOneUser", this.$route.params.id);
+    },
+    fetchSinglePost() {
+
+      this.$store.dispatch("fetchOnePost", this.$route.params.id);
+
     },
     profileUpdate() {
      let firstName = document.getElementById("Fname")
@@ -660,6 +671,12 @@ console.log(this.payloadPosts.Msg)
       return this.$store.state.posts;
 
     },
+    SPost() {
+
+return this.$store.state.post;
+
+},
+  
     Replies() {
 
       return this.$store.state.Replies
@@ -672,8 +689,12 @@ console.log(this.payloadPosts.Msg)
     console.log(this.user)
     this.fetchPosts();
     console.log(this.post)
+    this.fetchSinglePost();
+    console.log(this.post)
+
     this.fetchReplies();
     console.log(this.Replies)
+    console.log(this.post)
   }
 }
 

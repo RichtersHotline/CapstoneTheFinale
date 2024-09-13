@@ -6,7 +6,7 @@
   to="/about">About</router-link>
   <router-link class="me-1 txt" to="/contact">Contact</router-link>
   <router-link class="me-1 txt" to="/signup">signup</router-link>
-  <router-link class="me-1 txt" to="/profile">profile</router-link>  </div>
+   </div>
   
     </footer>
   
