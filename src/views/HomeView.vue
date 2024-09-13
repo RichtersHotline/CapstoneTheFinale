@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid align">
 <h1 class="hidden">Hola</h1>
 <div class="EntireCon" >
   <div class="LeftSideCon" v-if="Users">
@@ -35,7 +35,7 @@
 <div v-if="limited">
   <div class="MessageContainer" v-for="post in Post.slice(9, 13)" :key="post.postID">
     <div class="Messages">
-      <h5 class="NameBG">John Doe posted on {{post.DatePosted}}</h5>
+      <h5 class="NameBG"></h5>
 
     <h5 class="UserMessage">{{ post.Msg }}</h5>
     <h5>{{ post.postID }}</h5>
@@ -52,6 +52,11 @@
       <button class="PostDelBtn" data-bs-toggle="modal" data-bs-target="#postReply">
         Reply 
       </button>
+      <router-link :to="{name: 'SinglePost', params: { id: post.postID } }">
+        <button class="PostDelBtn">
+          View 
+        </button>
+      </router-link>
     </div>
   </div>
 
@@ -69,7 +74,7 @@
 <div v-if="Replies">
 <div class="ReplyContainer mt-4" v-for="reply in Replies.slice(8, 12)" :key="reply.commentID">
   <div class="Messages">
-    <h5 class="NameBG">John Doe replied on {{reply.DatePosted }}</h5>
+    <h5 class="NameBG"></h5>
 
 <h5 class="UserMessage">{{ reply.Reply}}</h5>
 <div class="PostImgContainer">

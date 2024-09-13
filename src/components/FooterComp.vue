@@ -5,7 +5,6 @@
   <router-link class="me-1 txt"   activeClass="border-indigo-500"
   to="/about">About</router-link>
   <router-link class="me-1 txt" to="/contact">Contact</router-link>
-  <router-link class="me-1 txt" to="/signup">signup</router-link>
    </div>
   
     </footer>
