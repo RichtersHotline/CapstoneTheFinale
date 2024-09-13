@@ -14,7 +14,7 @@
 <input type="password" name="password" class="Pwd" v-model="userPwd" placeholder="Password..." id="LoginPForm"  UserEntry>
 <h2 name="Admin" id="Admin" class="Admin">Admin Key:</h2>
 
-     <input type="email" name="Admin" class="Admin" v-model="adminKey" placeholder="Admin key..." id="LoginAdminForm" UserEntry>
+     <input type="password" name="Admin" class="Admin" v-model="adminKey" placeholder="Admin key..." id="LoginAdminForm" UserEntry>
 <div class="btnContainer mx-auto">
     <div class="router-link">
         <button id="VipBtnULogin" type="button" class="mb-4 mx-auto" @click.prevent="login">Login As User</button>

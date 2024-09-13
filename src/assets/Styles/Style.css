@@ -121,6 +121,13 @@ box-sizing:border-box;
     font-family: "Darker Grotesque", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
+  margin-bottom:10px;
+  margin-top:10px;
+
+}
+.modal h4 {
+   background-color: white !important;
+    color: white !important;
 
 }
 p {
