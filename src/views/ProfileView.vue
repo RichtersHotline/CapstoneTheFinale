@@ -286,8 +286,8 @@
   </div>
   <div v-if="fetchPosts">
     <div class="MessageContainer" v-for="post in Post" :key="post.postID">
-      <h5 class="NameBG">John Doe posted on <span>{{formattedDate}}</span></h5>
       <div class="Messages">
+        <h5 class="NameBG"></h5>
       <h5 class="UserMessage">{{ post.Msg }}</h5>
       <h5>{{post.postID}}</h5>
       <div class="PostImgContainer">
@@ -323,7 +323,7 @@
               </div>
   <div v-if="Replies">
   <div class="ReplyContainer" v-for="reply in Replies" :key="reply.commentID">
-    <h5 class="NameBG">John Doe replied on {{reply.DatePosted }}</h5>
+    <h5 class="NameBG"></h5>
     <div class="Messages">
   <h5 class="UserMessage">{{ reply.Reply}}</h5>
   <h5>{{reply.commentID}}</h5>

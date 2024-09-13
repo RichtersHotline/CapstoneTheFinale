@@ -233,26 +233,22 @@ console.log("error")
 },
 async fetchOnePost(context, id) {
   try {
-    const {results} = await (await axios.get(`${apiURL}posts/${id}`)).data;
-    
+    const { results } = await (await axios.get(`${apiURL}posts/${id}`)).data;
     if (results) {
-      
-      console.log(results)
+      console.log(results);
       context.commit('setSinglePost', results);
     } else {
       toast.error(`${results}`, {
         autoClose: 2000,
         position: toast.POSITION.BOTTOM_CENTER,
-        theme:'dark'
-
+        theme: 'dark'
       });
     }
   } catch (e) {
     toast.error(`${e.message}`, {
       autoClose: 2000,
       position: toast.POSITION.BOTTOM_CENTER,
-      theme:'dark'
-
+      theme: 'dark'
     });
   }
 },

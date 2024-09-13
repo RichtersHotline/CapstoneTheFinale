@@ -1,53 +1,26 @@
 <template>
-    <div class="container-fluid p-0">
-    <h1 class="text-center">Viewing post</h1>
-    <div v-if="Posts">
-        <h5 class="UserMessage">{{Posts.Msg}}</h5>
-<h5>abc</h5>
-
+  <h1>Viewing Post...</h1> 
+  <div v-if="posts.length">
+    <div v-for="post in posts" :key="post.postID">
+      <h5 class="UserMessage">{{ post.Msg }}</h5>
+      <img :src="post.PostImg" class="PostImg" loading="lazy">
 
     </div>
-    <div v-else>
-        loadin
-    </div>
-    
-</div>
-  </template>
+  </div>
+  <div v-else>
+    <p>No posts found.</p>
+  </div>
+</template>
+
 <script>
 export default {
-    methods: {
-    fetchSinglePost() {
-
-        this.$store.dispatch("fetchOnePost", this.$route.params.id)
-
-    }
-        
-    },
   computed: {
-    User() {
-      return this.$store.state.user;
-
-    },
-     Posts() {
-
+    posts() {
       return this.$store.state.post;
-
-    },
-    Replies() {
-
-      return this.$store.state.Replies
-
     }
-
   },
-  mounted() {
-    console.log(this.user)
-    this.fetchSinglePost();
-    console.log(this.post)
+  created() {
+    this.$store.dispatch('fetchOnePost', this.$route.params.id);
   }
 }
 </script>
-
-<style>
-
-</style>
