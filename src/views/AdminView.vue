@@ -165,7 +165,7 @@
               <h4>Choose new profile picture</h4>
               <input type="text" id="userImg" v-model="payload.UserImg">
               <h4>Choose new Role</h4>
-              <input type="text" id="Role" readonly v-model="payload.userRole">
+              <input type="text" id="Role" v-model="payload.userRole">
               <button type="submit" class="mb-4" @click.prevent="profileUpdate" id="ProductBtn2">Update
                 Profile</button>
             </div>
